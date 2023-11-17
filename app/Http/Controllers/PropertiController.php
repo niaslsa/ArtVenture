@@ -12,7 +12,7 @@ class PropertiController extends Controller
      */
     public function index()
     {
-        //
+        return view('properti.properti');
     }
 
     /**
