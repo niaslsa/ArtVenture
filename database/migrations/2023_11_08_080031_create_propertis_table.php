@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('propertis', function (Blueprint $table) {
+        Schema::create('properti', function (Blueprint $table) {
             $table->integer('id_properti',true);
             $table->integer('id_akun',false);
             $table->integer('id_ss', false);
@@ -20,11 +20,12 @@ return new class extends Migration
             $table->string('nama_properti',50);
             $table->enum('kondisi_properti',['Baik','Buruk']);
 
+
             //Foreign Key
 
-        $table->foreign('id_akun')->on('akun')
-        ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
-        });
+         $table->foreign('id_akun')->on('akun')
+       ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+    });
     }
 
     /**

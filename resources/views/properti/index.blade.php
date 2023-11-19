@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <div class="">
                 <div class="card-header">
-                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
+                    <span class="h1" style="color:#757171; font-weight: bold;">
                         Data Properti & Lahan
                     </span>
                 </div>
@@ -25,14 +25,14 @@
                                         <td>{{ $p->kondisi_lahan_properti }}</td>
                                         <td>
                                         @if ($p-> foto_lahan_properti)
-                                                <img src="{{ url('foto') . '/' . $d->foto_properti }} "
+                                                <img src="{{ url('foto') . '/' . $p->foto_properti }} "
                                                     style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
                                         <td>
 
                                             <a href="properti/edit/{{ $p->id_properti }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idSarana="{{ $d->id_ss }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idSarana="{{ $p->id_properti }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-4">
                     <a href="penyewaan/tambah">
-                        <btn class="btn btn-success">Tambah Data Properti & Lahan</btn>
+                        <btn class="btn btn-success">Tambah Data Lahan</btn>
                     </a>
 
                 </div>

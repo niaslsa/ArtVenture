@@ -23,7 +23,7 @@
                 </span>
 
                 <div class="text logo-text">
-                    <span class="name">ArtVenture</span>
+                    <span class="name">DashBuddy</span>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="properti">
+                        <a href="#">
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Property & Lahan</span>
                         </a>
@@ -91,6 +91,8 @@
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
+
+                
                 
             </div>
         </div>
@@ -109,10 +111,10 @@
     /* ===== Colors ===== */
     --body-color: #ffffff;
     --sidebar-color: #757171;
-    --primary-color: #ffffff;
+    --primary-color: #555555;
     --primary-color-light: #ffffff;
-    --toggle-color: #ffffff;
-    --text-color: #cdc9c9;
+    --toggle-color: #DDD;
+    --text-color: #555555;
 
     /* ====== Transition ====== */
     --tran-03: all 0.2s ease;
@@ -409,7 +411,7 @@ body.dark .home .text{
 
     </nav>
 
-<section class="home">
+    <section class="home">
         <div class="text">Dashboard</div>
     </section>
 

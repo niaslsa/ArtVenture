@@ -1,12 +1,12 @@
 @extends('layout.layout')
-@section('title', 'Tambah Data Properti')
+@section('title', 'Tambah Data Lahan')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Properti
+                        Tambah Data Lahan
                     </span>
                 </div>
                 <div class="card-body">

@@ -10,9 +10,12 @@ class PropertiController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Properti $properti)
     {
-        return view('properti.properti');
+        $data = [
+            'properti' => Properti::all()
+        ];
+        return view('properti.index', $data);
     }
 
     /**
