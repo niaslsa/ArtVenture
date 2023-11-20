@@ -380,7 +380,7 @@ color: var(--text-color);
                     </li>
 
                     <li class="nav-link">
-                        <a href="properti">
+                        <a href="/properti">
                             <i class='bx bx-heart icon' ></i>
                             <span class="text nav-text">Properti</span>
                         </a>
