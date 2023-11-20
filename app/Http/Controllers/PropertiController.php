@@ -10,11 +10,17 @@ class PropertiController extends Controller
     /**
      * Display a listing of the resource.
      */
+    protected $userModel;
+    public function __construct()
+    {
+        $this->userModel = new Properti;
+    }
     public function index(Properti $properti)
     {
         $data = [
-            'properti' => Properti::all()
+            'properti' => $this->userModel->all()
         ];
+        // dd($data);
         return view('properti.index', $data);
     }
 

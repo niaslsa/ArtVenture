@@ -13,18 +13,19 @@ return new class extends Migration
     {
         Schema::create('properti', function (Blueprint $table) {
             $table->integer('id_properti',true);
-            $table->integer('id_akun',false);
-            $table->integer('id_ss', false);
-            $table->integer('id_wisatawan', false);
-            $table->integer('id_penyewaan', false);
+            // $table->integer('id_akun',false);
+            // $table->integer('id_ss', false);
+            // $table->integer('id_wisatawan', false);
+            // $table->integer('id_penyewaan', false);
             $table->string('nama_properti',50);
             $table->enum('kondisi_properti',['Baik','Buruk']);
+            $table->text('foto_properti');
 
 
             //Foreign Key
 
-         $table->foreign('id_akun')->on('akun')
-       ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+    //      $table->foreign('id_akun')->on('akun')
+    //    ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
     });
     }
 

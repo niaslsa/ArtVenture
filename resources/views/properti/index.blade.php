@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Daftar Properti & Lahan')
+@section('title', 'Data Properti & Lahan')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -9,22 +9,27 @@
                         Data Properti & Lahan
                     </span>
                 </div>
+
                             <hr>
-                        <table class="table table-hover table-bordered">
+                            <a href="penyewaan/tambah" style="margin-bottom: 10px">
+                                <btn class="btn btn-lg btn-success mb-4">Tambah Data Lahan</btn>
+                            </a>
+                        <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
                                     <th>NAMA LAHAN</th>
                                     <th>KONDISI LAHAN DAN PROPERTI</th>
+                                    <th>FOTO LAHAN</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($properti as $p)
                                     <tr>
-                                        <td>{{ $p->nama_lahan_properti }}</td>
-                                        <td>{{ $p->kondisi_lahan_properti }}</td>
+                                        <td>{{ $p->nama_properti }}</td>
+                                        <td>{{ $p->kondisi_properti }}</td>
                                         <td>
-                                        @if ($p-> foto_lahan_properti)
+                                        @if ($p-> foto_properti)
                                                 <img src="{{ url('foto') . '/' . $p->foto_properti }} "
                                                     style="max-width: 150px; height: auto;" />
                                             @endif
@@ -41,9 +46,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <a href="penyewaan/tambah">
-                        <btn class="btn btn-success">Tambah Data Lahan</btn>
-                    </a>
+                    
 
                 </div>
                 <div class="card-footer">
