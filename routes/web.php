@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\LahanController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertiController;
@@ -23,14 +23,26 @@ Route::prefix('login')->group(function(){
 // Dashboard
 Route::prefix('dashboard')->group(function () {
 });
+// Penyewaan 
+Route::prefix('penyewaan')->group(function () {
 
+});
 // Properti
 Route::prefix('properti')->group(function () {
     Route::get('/', [PropertiController::class,'index']);
-    Route::get('/properti/tambah', [PropertiController::class,'create']);
-    Route::post('/properti/simpan', [PropertiController::class,'store']);
-    Route::get('/properti/edit/{id}', [PropertiController::class,'edit']);
-    Route::post('/properti/update', [PropertiController::class,'update']);
-    Route::delete('/properti/hapus/', [PropertiController::class,'destroy']);
+    Route::get('/tambah', [PropertiController::class,'create']);
+    Route::post('/simpan', [PropertiController::class,'store']);
+    Route::get('/edit/{id}', [PropertiController::class,'edit']);
+    Route::post('/edit/update', [PropertiController::class,'update']);
+    Route::delete('/hapus', [PropertiController::class,'destroy']);
 });
 
+// Lahan
+Route::prefix('lahan')->group(function () {
+    Route::get('/', [LahanController::class,'index']);
+    Route::get('/tambah', [LahanController::class,'create']);
+    Route::post('/simpan', [LahanController::class,'store']);
+    Route::get('/edit/{id}', [LahanController::class,'edit']);
+    Route::post('/edit/update', [LahanController::class,'update']);
+    Route::delete('/hapus', [LahanController::class,'destroy']);
+});

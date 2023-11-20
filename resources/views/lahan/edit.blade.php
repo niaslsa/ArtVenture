@@ -1,35 +1,31 @@
 @extends('layout.layout')
-@section('title', 'Edit Data Properti')
+@section('title', 'Edit Data Lahan')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Edit Data Properti
+                        Edit Data Lahan
                     </span>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="update" enctype="multipart/form-data">
-                        @foreach ($properti as $item)
-                        <input type="hidden" class="form-control" name="id_properti" value="{{ $item->id_properti }}" />
+                        @foreach ($lahan as $item)
+                        <input type="hidden" class="form-control" name="id_lahan" value="{{ $item->id_lahan }}" />
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Nama Properti</label>
-                                        <input type="text" class="form-control" name="nama_properti" value="{{ $item->nama_properti }}" />
+                                        <label>Nama Lahan</label>
+                                        <input type="text" class="form-control" name="nama_lahan" value="{{ $item->nama_lahan }}" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Kondisi Properti</label>
-                                        <br />
-                                        <input type="radio" id="baik" {{ $item->kondisi_properti == 'Baik' ||  $item->kondisi_properti == 'baik' ? 'checked' : '' }} name="kondisi_properti" value="Baik" />
-                                        <label for="baik">Baik</label>
-                                        <input type="radio" id="buruk" {{ $item->kondisi_properti == 'buruk' || $item->kondisi_properti ==  'buruk' ? 'checked' : '' }}  name="kondisi_properti" value="Buruk" />
-                                        <label for="buruk">Buruk</label>
+                                        <label>Lokasi Lahan</label>
+                                        <input type="text" class="form-control" name="lokasi_lahan" value="{{ $item->lokasi_lahan }}" />
                                     </div>
                                     <div class="form-group">
-                                        <label>Foto Properti</label>
-                                        <input type="file" class="form-control" name="foto_properti" />
+                                        <label>Foto Lahan</label>
+                                        <input type="file" class="form-control" name="foto_lahan" />
                                     </div>
 
                                     @csrf

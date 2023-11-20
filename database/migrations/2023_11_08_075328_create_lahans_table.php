@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('lahan', function (Blueprint $table) {
             $table->integer('id_lahan',true);
-            $table->integer('id_akun',false)->nullable(false);
-            $table->integer('id_mitra',false);
-            $table->integer('id_ss',false);
+            // $table->integer('id_akun',false)->nullable(false);
+            // $table->integer('id_mitra',false);
+            // $table->integer('id_ss',false);
             $table->string('nama_lahan',25);
             $table->string('lokasi_lahan',255);
             $table->text('foto_lahan');
 
             //Foreign Key
 
-        $table->foreign('id_akun')->on('akun')
-        ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+        // $table->foreign('id_akun')->on('akun')
+        // ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

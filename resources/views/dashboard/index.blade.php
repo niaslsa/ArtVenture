@@ -63,14 +63,14 @@
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Penyewaan</span>
+                            <span class="text nav-text">Lahan</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Property & Lahan</span>
+                            <span class="text nav-text">Properti</span>
                         </a>
                     </li>
 

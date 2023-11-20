@@ -10,7 +10,7 @@ class Lahan extends Model
     use HasFactory;
     protected $table = 'lahan';
     protected $primarykey = ['id_lahan'];
-    protected $fillable = ['id_mitra','id_ss','nama_lahan','lokasi_lahan','foto_lahan'];
+    protected $fillable = ['nama_lahan','lokasi_lahan','foto_lahan'];
     public $timestamps = false;
     protected $casts = [
     ];

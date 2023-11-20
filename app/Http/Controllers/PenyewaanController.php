@@ -10,10 +10,15 @@ class PenyewaanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Penyewaan $penyewaan)
     {
-        //
+        $data = [
+            'penyewaan' => $penyewaan->all()
+        ];
+        // dd($data);
+        return view('penyewaan.index', $data);
     }
+    
 
     /**
      * Show the form for creating a new resource.
