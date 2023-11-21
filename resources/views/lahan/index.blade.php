@@ -38,6 +38,9 @@
 
                                     <a href="lahan/edit/{{ $l->id_lahan }}">
                                         <btn class="btn btn-primary">EDIT</btn>
+                                        <a href="lahan/detail/{{ $l->id_lahan }}">
+                                            <btn class="btn btn-warning">DETAIL</btn>
+                                        </a>
                                     </a>
                                     <btn class="btn btn-danger btnHapus" idLahan="{{ $l->id_lahan }}">HAPUS</btn>
                                 </td>

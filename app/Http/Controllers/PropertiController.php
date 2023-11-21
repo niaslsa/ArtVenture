@@ -83,6 +83,16 @@ class PropertiController extends Controller
     
     }
 
+    public function detail(Properti $properti, string $id)
+    {
+        $data = [
+            'properti' =>  Properti::where('id_properti', $id)->get()
+        ];
+
+        return view('properti.detail', $data);
+    
+    }
+
     /**
      * Update the specified resource in storage.
      */

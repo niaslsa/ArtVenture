@@ -39,6 +39,9 @@
                                     <a href="properti/edit/{{ $p->id_properti }}">
                                         <btn class="btn btn-primary">EDIT</btn>
                                     </a>
+                                    <a href="properti/detail/{{ $p->id_properti }}">
+                                        <btn class="btn btn-warning">DETAIL</btn>
+                                    </a>
                                     <btn class="btn btn-danger btnHapus" idProperti="{{ $p->id_properti }}">HAPUS</btn>
                                 </td>
                             </tr>

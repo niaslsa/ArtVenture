@@ -33,6 +33,7 @@ Route::prefix('properti')->group(function () {
     Route::get('/tambah', [PropertiController::class,'create']);
     Route::post('/simpan', [PropertiController::class,'store']);
     Route::get('/edit/{id}', [PropertiController::class,'edit']);
+    Route::get('/detail/{id}', [PropertiController::class,'detail']);
     Route::post('/edit/update', [PropertiController::class,'update']);
     Route::delete('/hapus', [PropertiController::class,'destroy']);
 });
@@ -43,6 +44,7 @@ Route::prefix('lahan')->group(function () {
     Route::get('/tambah', [LahanController::class,'create']);
     Route::post('/simpan', [LahanController::class,'store']);
     Route::get('/edit/{id}', [LahanController::class,'edit']);
+    Route::get('/detail/{id}', [LahanController::class,'detail']);
     Route::post('/edit/update', [LahanController::class,'update']);
     Route::delete('/hapus', [LahanController::class,'destroy']);
 });
