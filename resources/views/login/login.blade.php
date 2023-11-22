@@ -51,7 +51,7 @@
             border-color: rgba(133, 121, 142, 1);">Login</button>
                                 <p></p>
                                 <p></p>
-                                <img src="{{ asset('img/loginpict.png') }}" alt=""
+                                <img src="{{ asset('foto/login.png') }}" alt=""
                                     style="width: 450x; height: 250px;">
                             </div>
                         </div>

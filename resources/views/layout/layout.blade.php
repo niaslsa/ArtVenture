@@ -388,21 +388,21 @@
                     @if (Auth::user()->role == 'staff_sarana')
                         <li class="nav-link">
                             <a href="/lahan">
-                                <i class='bx bx-pie-chart-alt icon'></i>
+                                <i class='bx bx-buildings icon'></i>
                                 <span class="text nav-text">Lahan</span>
                             </a>
                         </li>
 
                         <li class="nav-link">
                             <a href="/properti">
-                                <i class='bx bx-heart icon'></i>
+                                <i class='bx bxs-component icon'></i>
                                 <span class="text nav-text">Properti</span>
                             </a>
                         </li>
 
                         <li class="nav-link">
                             <a href="/penyewaan">
-                                <i class='bx bx-rental icon'></i>
+                                <i class='bx bx-analyse icon'></i>
                                 <span class="text nav-text">Penyewaan</span>
                             </a>
                         </li>
@@ -411,7 +411,7 @@
 
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx bx-wallet icon'></i>
+                            <i class='bx bx-group icon'></i>
                             <span class="text nav-text">Mitra</span>
                         </a>
                     </li>
