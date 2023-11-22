@@ -1,48 +1,47 @@
 @extends('layout.layout')
-@section('title', 'Data Lahan')
+@section('title', 'Data Penyewaan')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="">
                 <div class="card-header">
                     <span class="h1" style="color:#757171; font-weight: bold;">
-                        Data Lahan
+                        Data Penyewaan
                     </span>
                 </div>
+                <a href="penyewaan/cetak">
+                    <button class="btn btn-primary ml-auto mt-5" style="float: right">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>Cetak PDF
+                    </button>
+                </a>
 
                 <hr>
-                <a href="/lahan/tambah" style="margin-bottom: 10px">
-                    <button class="btn btn-lg btn-success mb-4">Tambah Data Lahan</button>
+                <a href="/penyewaan/tambah" style="margin-bottom: 10px">
+                    <button class="btn btn-lg btn-success mb-4">Tambah Data Penyewaan</button>
                 </a>
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
                         <tr>
-                            <th>NAMA LAHAN</th>
-                            <th>LOKASI LAHAN</th>
-                            <th>FOTO LAHAN</th>
+                            <th>ID PENYEWAAN</th>
+                            <th>WAKTU PENYEWAAN</th>
                             <th>AKSI</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($lahan as $l)
+                        @foreach ($penyewaan as $n)
                             <tr>
-                                <td>{{ $l->nama_lahan }}</td>
-                                <td>{{ $l->lokasi_lahan }}</td>
-                                <td>
-                                    @if ($l->foto_lahan)
-                                        <img src="{{ url('foto') . '/' . $l->foto_lahan }} "
-                                            style="max-width: 150px; height: auto;" />
-                                    @endif
-                                </td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $n->waktu_penyewaan }}</td>
                                 <td>
 
-                                    <a href="lahan/edit/{{ $l->id_lahan }}">
+                                    <a href="penyewaan/edit/{{ $n->id_penyewaan }}">
                                         <button class="btn btn-primary">EDIT</button>
-                                        <a href="lahan/detail/{{ $l->id_lahan }}">
+                                        <a href="penyewaan/detail/{{ $n->id_penyewaan }}">
                                             <button class="btn btn-warning">DETAIL</button>
                                         </a>
                                     </a>
-                                    <button class="btn btn-danger btnHapus" idLahan="{{ $l->id_lahan }}">HAPUS</button>
+                                    <button class="btn btn-danger btnHapus"
+                                        idPenyewaan="{{ $n->id_penyewaan }}">HAPUS</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -50,22 +49,12 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-4">
-
-
-        </div>
-        <div class="card-footer">
-
-        </div>
     </div>
-    </div>
-    </div>
-
 
     <script type="module">
         $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idLahan = $(this).closest('.btnHapus').attr('idLahan');
+            let idPenyewaan = $(this).closest('.btnHapus').attr('idPenyewaan');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -78,9 +67,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'lahan/hapus',
+                        url: 'penyewaan/hapus',
                         data: {
-                            id_lahan: idLahan,
+                            id_penyewaan: idPenyewaan,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
@@ -96,5 +85,4 @@
             });
         });
     </script>
-
 @endsection

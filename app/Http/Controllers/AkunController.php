@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akun;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AkunController extends Controller
 {
@@ -18,48 +20,42 @@ class AkunController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function login(Akun $akun, Request $request)
     {
-        //
+        $validatedData = $request->validate(
+            [
+                'username' => 'required',
+                'password' => 'required',
+            ],
+            [
+                'username.required' => 'Username wajib diisi',
+                'password.required' => 'Password wajib diisi',
+            ],
+        );
+
+        $credentials = [
+            'username' => $validatedData['username'],
+            'password' => $validatedData['password'],
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->role == 'staff_sarana') {
+                Session::regenerate();
+                return redirect('/lahan');
+            } else {
+                return redirect('/default-route')->with('_token', Session::token());
+            }
+        }
+
+        return redirect('/login')->with('error', 'Invalid credentials');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    function logout()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Akun $akun)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Akun $akun)
-    {
-        //
+        Auth::logout();
+        Session::regenerateToken();
+        return redirect('/');
     }
 }

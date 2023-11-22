@@ -75,6 +75,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="/penyewaan">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Penyewaan</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-wallet icon' ></i>
                             <span class="text nav-text">Mitra</span>

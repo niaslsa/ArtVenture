@@ -12,7 +12,7 @@
 
                 <hr>
                 <a href="/properti/tambah" style="margin-bottom: 10px">
-                    <btn class="btn btn-lg btn-success mb-4">Tambah Data Properti</btn>
+                    <button class="btn btn-lg btn-success mb-4">Tambah Data Properti</button>
                 </a>
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
@@ -37,12 +37,12 @@
                                 <td>
 
                                     <a href="properti/edit/{{ $p->id_properti }}">
-                                        <btn class="btn btn-primary">EDIT</btn>
+                                        <button class="btn btn-primary">EDIT</button>
                                     </a>
                                     <a href="properti/detail/{{ $p->id_properti }}">
-                                        <btn class="btn btn-warning">DETAIL</btn>
+                                        <button class="btn btn-warning">DETAIL</button>
                                     </a>
-                                    <btn class="btn btn-danger btnHapus" idProperti="{{ $p->id_properti }}">HAPUS</btn>
+                                    <button class="btn btn-danger btnHapus" idProperti="{{ $p->id_properti }}">HAPUS</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -60,11 +60,9 @@
     </div>
     </div>
     </div>
-@endsection
 
-@section('footer')
     <script type="module">
-        $('tbody').on('click', '.btnHapus', function(a) {
+        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
             let idProperti = $(this).closest('.btnHapus').attr('idProperti');
             swal.fire({
@@ -96,6 +94,12 @@
                 }
             });
         });
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
+        });
     </script>
-
 @endsection
+
+
+
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lahan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LahanController extends Controller
@@ -20,7 +21,7 @@ class LahanController extends Controller
         $data = [
             'lahan' => $this->userModel->all()
         ];
-        // dd($data);
+        
         return view('lahan.index', $data);
     }
 

@@ -101,8 +101,17 @@ class PropertiController extends Controller
         $data = $request->validate([
             'nama_properti' => 'required',
             'kondisi_properti' => 'required',
-            'foto_properti' => 'sometimes', 
+            'foto_properti' => 'sometimes|file', 
         ]);
+
+        if ($request->hasFile('foto_properti') && $request->file('foto_properti')->isValid()) {
+            $foto_file = $request->file('foto_properti');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('foto'), $foto_nama);
+            $data['foto_properti'] = $foto_nama;
+        } else {
+            return back()->with('error', 'File upload failed. Please select a valid file.');
+        }
 
         $id_properti = $request->input('id_properti');
 
