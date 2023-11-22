@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('berita', function (Blueprint $table) {
             $table->integer('id_berita',true);
-            $table->integer('id_akun',false)->nullable(false);
-            $table->integer('id_jurnalis',false);
+            // $table->integer('id_akun',false)->nullable(false);
+            // $table->integer('id_jurnalis',false);
+            $table->text('isi_berita',false);
             $table->string('nama_berita',250);
-            $table->text('isi_berita');
-            $table->text('header_berita');
+            $table->text('foto_berita');
             //Foreign Key
 
-        $table->foreign('id_akun')->on('akun')
-        ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+        // $table->foreign('id_akun')->on('akun')
+        // ->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
