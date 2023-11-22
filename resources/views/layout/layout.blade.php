@@ -359,7 +359,7 @@ color: var(--text-color);
                     </li>
 
                     <li class="nav-link">
-                        <a href="http://127.0.0.1:8000/berita">
+                        <a href="/berita">
                             <i class='bx bx-news icon' ></i>
                             <span class="text nav-text">Berita</span>
                         </a>
@@ -397,7 +397,7 @@ color: var(--text-color);
                     @endif
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/mitra">
                             <i class='bx bx-group icon'></i>
                             <span class="text nav-text">Mitra</span>
                         </a>
