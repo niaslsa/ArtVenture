@@ -3,6 +3,8 @@ use App\Http\Controllers\LahanController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertiController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\MitraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */ 
 // Login
-Route::prefix('login')->group(function(){
-    Route::get('/',[AkunController::class,'index'])->name('login');
+Route::get('/',[AkunController::class,'index'])->name('login');
+     Route::prefix('login')->group(function(){
 });
 
 // Dashboard
@@ -45,4 +47,26 @@ Route::prefix('lahan')->group(function () {
     Route::get('/edit/{id}', [LahanController::class,'edit']);
     Route::post('/edit/update', [LahanController::class,'update']);
     Route::delete('/hapus', [LahanController::class,'destroy']);
+});
+
+// Berita
+Route::prefix('berita')->group(function () {
+    Route::get('/', [BeritaController::class,'index']);
+    Route::get('/tambah', [BeritaController::class,'create']);
+    Route::post('/simpan', [BeritaController::class,'store']);
+    Route::get('/edit/{id}', [BeritaController::class,'edit']);
+    Route::get('/detail/{id}', [BeritaController::class,'detail']);
+    Route::post('edit/simpan', [BeritaController::class,'update']);
+    Route::delete('/hapus', [BeritaController::class,'destroy']);
+});
+
+// Mitra
+Route::prefix('mitra')->group(function () {
+    Route::get('/', [MitraController::class,'index']);
+    Route::get('/tambah', [MitraController::class,'create']);
+    Route::post('/simpan', [MitraController::class,'store']);
+    Route::get('/edit/{id}', [MitraController::class,'edit']);
+    Route::get('/detail/{id}', [MitraController::class,'detail']);
+    Route::post('edit/simpan', [MitraController::class,'update']);
+    Route::delete('/hapus', [MitraController::class,'destroy']);
 });

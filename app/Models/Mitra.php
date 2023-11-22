@@ -10,7 +10,7 @@ class Mitra extends Model
     use HasFactory;
     protected $table = 'mitra';
     protected $primarykey = 'id_mitra';
-    protected $fillable = ['nama_mitra','kontak_mitra','bisnis_mitra','foto_mitra'];
+    protected $fillable = ['nama_mitra','foto_mitra','bisnis_mitra','kontak_mitra'];
     public $timestamps = false;
     // protected $casts = [
     // ];
