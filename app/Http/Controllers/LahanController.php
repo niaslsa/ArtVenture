@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lahan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class LahanController extends Controller
@@ -20,7 +21,7 @@ class LahanController extends Controller
         $data = [
             'lahan' => $this->userModel->all()
         ];
-        // dd($data);
+        
         return view('lahan.index', $data);
     }
 
@@ -45,7 +46,7 @@ class LahanController extends Controller
         $data = $request->validate([
             'nama_lahan' => 'required',
             'lokasi_lahan' => 'required',
-            'foto_lahan' => 'required', 
+            'foto_lahan' => 'required',
         ]);
 
 
@@ -56,10 +57,10 @@ class LahanController extends Controller
             $data['foto_lahan'] = $foto_nama;
         }
 
-        if ($lahan->create($data)){
-            return redirect('/lahan')->with('success','Data properti baru berhasil ditambahkan');
-    }
-    return back()->with('error','Data properti gagal ditambahkan');
+        if ($lahan->create($data)) {
+            return redirect('/lahan')->with('success', 'Data properti baru berhasil ditambahkan');
+        }
+        return back()->with('error', 'Data properti gagal ditambahkan');
     }
 
     /**
@@ -80,8 +81,17 @@ class LahanController extends Controller
         ];
 
         return view('lahan.edit', $data);
-    
     }
+
+    public function detail(Lahan $lahan, string $id)
+    {
+        $data = [
+            'lahan' => Lahan::where('id_lahan', $id)->get(),
+        ];
+
+        return view('lahan.detail', $data);
+    }
+
 
     /**
      * Update the specified resource in storage.
