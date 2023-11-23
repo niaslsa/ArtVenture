@@ -12,7 +12,7 @@
 
 <body>
     <section class="" style="height: 930px; overflow: hidden;">
-        <form action="/" method="post">
+        <form action="/login" method="post">
             {{ csrf_field() }}
             <div class="py-5" style="background-color: rgba(117, 113, 113, 1); height: 100%;">
                 <div class="row justify-content-center align-items-center h-100 width: 775px;">

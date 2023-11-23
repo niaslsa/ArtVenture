@@ -58,9 +58,9 @@ class LahanController extends Controller
         }
 
         if ($lahan->create($data)) {
-            return redirect('/lahan')->with('success', 'Data properti baru berhasil ditambahkan');
+            return redirect('/lahan')->with('success', 'Data lahan baru berhasil ditambahkan');
         }
-        return back()->with('error', 'Data properti gagal ditambahkan');
+        return back()->with('error', 'Data lahan gagal ditambahkan');
     }
 
     /**

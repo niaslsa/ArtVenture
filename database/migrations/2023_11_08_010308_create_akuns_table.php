@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('id_akun',true);
             $table->string('username',20);
             $table->string('password')->nullable(false);
-            $table->enum('role',['jurnalis','staff_ticketing','staff_sarana'])->nullable(false);
+            $table->enum('role',['super_admin','mitra','jurnalis','staff_ticketing','staff_sarana'])->nullable(false);
         });
     }
 

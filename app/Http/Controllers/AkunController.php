@@ -20,42 +20,34 @@ class AkunController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function login(Akun $akun, Request $request)
+    public function login(Request $request)
     {
-        $validatedData = $request->validate(
-            [
-                'username' => 'required',
-                'password' => 'required',
-            ],
-            [
-                'username.required' => 'Username wajib diisi',
-                'password.required' => 'Password wajib diisi',
-            ],
-        );
-
-        $credentials = [
-            'username' => $validatedData['username'],
-            'password' => $validatedData['password'],
-        ];
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
 
         if (Auth::attempt($credentials)) {
-            $user = Auth::user();
+            $userRole = Auth::user()->role;
 
-            if ($user->role == 'staff_sarana') {
-                Session::regenerate();
-                return redirect('/lahan');
-            } else {
-                return redirect('/default-route')->with('_token', Session::token());
+            if ($userRole == 'super_admin') {
+                return redirect()->to('/');
+            } elseif ($userRole == 'mitra') {
+                return redirect()->to('/mitra');
+            } elseif ($userRole == 'jurnalis') {
+                return redirect()->to('/berita');
+            } elseif ($userRole == 'staff_ticketing') {
+                return redirect()->to('/');
+            } elseif ($userRole == 'staff_sarana') {
+                return redirect()->to('/lahan');
             }
         }
-
-        return redirect('/login')->with('error', 'Invalid credentials');
+        
     }
-
     function logout()
-    {
-        Auth::logout();
-        Session::regenerateToken();
-        return redirect('/');
-    }
+        {
+            Auth::logout();
+            Session::regenerateToken();
+            return redirect('/login');
+        }
 }

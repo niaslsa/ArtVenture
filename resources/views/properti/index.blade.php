@@ -17,6 +17,7 @@
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
                         <tr>
+                            <th>ID PROPERTI</th>
                             <th>NAMA PROPERTI</th>
                             <th>KONDISI PROPERTI</th>
                             <th>FOTO PROPERTI</th>
@@ -26,6 +27,7 @@
                     <tbody>
                         @foreach ($properti as $p)
                             <tr>
+                                <td>{{ $p->id_properti }}</td>
                                 <td>{{ $p->nama_properti }}</td>
                                 <td>{{ $p->kondisi_properti }}</td>
                                 <td>

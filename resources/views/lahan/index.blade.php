@@ -17,6 +17,7 @@
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
                         <tr>
+                            <th>ID LAHAN</th>
                             <th>NAMA LAHAN</th>
                             <th>LOKASI LAHAN</th>
                             <th>FOTO LAHAN</th>
@@ -26,6 +27,7 @@
                     <tbody>
                         @foreach ($lahan as $l)
                             <tr>
+                                <td>{{ $l->id_lahan }}</td>
                                 <td>{{ $l->nama_lahan }}</td>
                                 <td>{{ $l->lokasi_lahan }}</td>
                                 <td>
@@ -35,15 +37,16 @@
                                     @endif
                                 </td>
                                 <td>
-
                                     <a href="lahan/edit/{{ $l->id_lahan }}">
                                         <button class="btn btn-primary">EDIT</button>
-                                        <a href="lahan/detail/{{ $l->id_lahan }}">
-                                            <button class="btn btn-warning">DETAIL</button>
-                                        </a>
                                     </a>
+                                    
+                                    <a href="lahan/detail/{{ $l->id_lahan }}">
+                                        <button class="btn btn-warning">DETAIL</button>
+                                    </a>
+                                    
                                     <button class="btn btn-danger btnHapus" idLahan="{{ $l->id_lahan }}">HAPUS</button>
-                                </td>
+                                </td>                                
                             </tr>
                         @endforeach
                     </tbody>

@@ -59,7 +59,7 @@ class MitraController extends Controller
         }
 
         if ($mitra->create($data)){
-            return redirect('/mitra')->with('success','Data mitra  baru berhasil ditambahkan');
+            return redirect('/mitra')->with('success','Data mitra baru berhasil ditambahkan');
     }
     return back()->with('error','Data mitra gagal ditambahkan');
     }
