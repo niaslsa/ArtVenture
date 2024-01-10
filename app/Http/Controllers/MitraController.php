@@ -104,8 +104,8 @@ class MitraController extends Controller
         $data = $request->validate([
             'nama_mitra' => 'required',
             'bisnis_mitra' => 'required',
-            'kontak_mitra' => 'required',
             'foto_mitra' => 'sometimes', 
+            'kontak_mitra' => 'required',
         ]);
 
         $id_mitra = $request->input('id_mitra');

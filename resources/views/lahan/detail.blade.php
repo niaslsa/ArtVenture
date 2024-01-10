@@ -36,7 +36,7 @@
                                     <label>Foto Lahan</label>
                                     <br>
                                     <img src="{{ url('foto') . '/' . $item->foto_lahan }} "
-                                        style="max-width: 100px; height: auto;" alt="Profile" />
+                                        style="max-width: 200px; height: auto;" alt="Profile" />
                                 </div>
 
                             </div>

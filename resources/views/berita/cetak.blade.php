@@ -14,17 +14,37 @@
             <table class="table table-striped mt-5">
             <thead>
             <tr>
+<<<<<<< HEAD
                 <th>No</th>
                 <th>Nama Berita</th>
                 <th>Isi Berita</th>
+=======
+                <th>Nama Berita</th>
+                <th>Isi Berita</th>
+                <th>Foto Berita</th>
+                {{-- <th>Tipe Obat</th>
+                <th>Stok Obat</th>
+                <th>Tanggal EXP</th> --}}
+>>>>>>> 57238c670e214df04180aa8494d3acebec00f3e2
             </tr>
         </thead>
         <tbody>
             @foreach ($berita as $n)
             <tr>
                 <td>{{$loop->iteration}}</td>
+<<<<<<< HEAD
                 <td>{{ $n->nama_berita }}</td>
                 <td>{{ $n->isi_berita }}</td>
+=======
+                <td>{{ $n->Nama_Berita }}</td>
+                <td>{{ $n->Isi_Berita }}</td>
+            @if ($1->foto_berita)
+                        <img src="{{  url('foto') . '/' . $1->foto_berita }} "
+                        style="max-width: 150px; height: auto;" />
+            @endif
+                {{-- <td>{{ $a->stok_obat }}</td>
+                <td>{{ $a->tgl_exp }}</td> --}}
+>>>>>>> 57238c670e214df04180aa8494d3acebec00f3e2
             </tr>
             @endforeach
         </tbody>

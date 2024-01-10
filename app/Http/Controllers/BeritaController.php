@@ -102,6 +102,7 @@ class BeritaController extends Controller
     {
         $data = $request->validate([
             'nama_berita' => 'required',
+            'isi_berita' => 'required',
             'foto_berita' => 'sometimes', 
         ]);
 
@@ -128,20 +129,21 @@ class BeritaController extends Controller
             }
         }
     }
-    /**
+     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Berita $berita, Request $request)
     {
         $id_berita = $request->input('id_berita');
 
+        // Hapus 
         $aksi = $berita->where('id_berita', $id_berita)->delete();
 
         if ($aksi) {
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data berita berhasil dihapus'
+                'pesan'   => 'Data jenis surat berhasil dihapus'
             ];
         } else {
             // Pesan Gagal
@@ -153,11 +155,22 @@ class BeritaController extends Controller
 
         return response()->json($pesan);
     }
+<<<<<<< HEAD
     public function cetakBerita(Berita $berita) 
+=======
+    public function cetakBerita(Berita $berita)
+>>>>>>> 57238c670e214df04180aa8494d3acebec00f3e2
     {
         $berita = $berita->all();
         $pdf = Pdf::loadView('berita.cetak',['berita' => $berita]);
         return $pdf->download('berita.pdf');
+<<<<<<< HEAD
 
     }
 }
+=======
+    
+    }
+}
+
+>>>>>>> 57238c670e214df04180aa8494d3acebec00f3e2

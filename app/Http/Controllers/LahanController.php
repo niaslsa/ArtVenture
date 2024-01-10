@@ -107,6 +107,14 @@ class LahanController extends Controller
         $id_lahan = $request->input('id_lahan');
         // dd($data);
         if ($id_lahan !== null) {
+
+            if ($request->hasFile('foto_lahan') && $request->file('foto_lahan')->isValid()) {
+                $foto_file = $request->file('foto_lahan');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $data['foto_lahan'] = $foto_nama;
+            }
+
             // Process Update
             $dataUpdate = $lahan->where('id_lahan', $id_lahan)->update($data);
 
