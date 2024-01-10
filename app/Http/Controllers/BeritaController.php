@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BeritaController extends Controller
 {
@@ -151,5 +152,12 @@ class BeritaController extends Controller
         }
 
         return response()->json($pesan);
+    }
+    public function cetakBerita(Berita $berita) 
+    {
+        $berita = $berita->all();
+        $pdf = Pdf::loadView('berita.cetak',['berita' => $berita]);
+        return $pdf->download('berita.pdf');
+
     }
 }

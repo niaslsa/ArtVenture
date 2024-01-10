@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/detail/{id}', [BeritaController::class, 'detail']);
             Route::post('edit/simpan', [BeritaController::class, 'update']);
             Route::delete('/hapus', [BeritaController::class, 'destroy']);
+            Route::get('/cetak', [BeritaController::class, 'cetakBerita']);
         });
 
     // Mitra
@@ -93,6 +94,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/detail/{id}', [MitraController::class, 'detail']);
             Route::post('edit/simpan', [MitraController::class, 'update']);
             Route::delete('/hapus', [MitraController::class, 'destroy']);
+            Route::get('/cetak', [MitraController::class, 'cetakMitra']);
         });
 
     Route::get('logout', [AkunController::class, 'logout']);

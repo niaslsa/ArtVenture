@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MitraController extends Controller
 {
@@ -154,5 +155,13 @@ class MitraController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function cetakMitra(Mitra $mitra) 
+    {
+        $mitra = $mitra->all();
+        $pdf = Pdf::loadView('mitra.cetak',['mitra' => $mitra]);
+        return $pdf->download('mitra.pdf');
+
     }
 }
