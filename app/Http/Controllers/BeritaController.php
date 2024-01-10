@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BeritaController extends Controller
 {
@@ -101,6 +102,7 @@ class BeritaController extends Controller
     {
         $data = $request->validate([
             'nama_berita' => 'required',
+            'isi_berita' => 'required',
             'foto_berita' => 'sometimes', 
         ]);
 
@@ -127,20 +129,21 @@ class BeritaController extends Controller
             }
         }
     }
-    /**
+     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Berita $berita, Request $request)
     {
         $id_berita = $request->input('id_berita');
 
+        // Hapus 
         $aksi = $berita->where('id_berita', $id_berita)->delete();
 
         if ($aksi) {
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data berita berhasil dihapus'
+                'pesan'   => 'Data jenis surat berhasil dihapus'
             ];
         } else {
             // Pesan Gagal
@@ -152,4 +155,12 @@ class BeritaController extends Controller
 
         return response()->json($pesan);
     }
+    public function cetakBerita(Berita $berita)
+    {
+        $berita = $berita->all();
+        $pdf = Pdf::loadView('berita.cetak',['berita' => $berita]);
+        return $pdf->download('berita.pdf');
+    
+    }
 }
+

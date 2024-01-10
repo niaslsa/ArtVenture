@@ -12,7 +12,7 @@
 
                 <hr>
                 <a href="/berita/tambah" style="margin-bottom: 10px">
-                    <btn class="btn btn-lg btn-success mb-4">Tambah Data Berita</btn>
+                    <button class="btn btn-lg btn-success mb-4">Tambah Data Berita</button>
                 </a>
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
@@ -38,12 +38,14 @@
                                 <td>
 
                                     <a href="berita/edit/{{ $l->id_berita }}">
-                                        <btn class="btn btn-primary">EDIT</btn>
+                                        <button class="btn btn-primary">EDIT</button>
                                     </a>
                                     <a href="berita/detail/{{ $l->id_berita }}">
-                                        <btn class="btn btn-primary">DETAIL</btn>
+                                        <button class="btn btn-primary">DETAIL</button>
                                     </a>
-                                    <btn class="btn btn-danger btnHapus" idBerita="{{ $l->id_berita }}">HAPUS</btn>
+                                    <a href="berita/hapus/{{ $l->id_berita }}">
+                                        <button class="btn btn-danger btnHapus" idBerita="{{ $l->id_berita }}">HAPUS</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -61,42 +63,44 @@
     </div>
     </div>
     </div>
-@endsection
 
-@section('footer')
-    <script type="module">
-        $('tbody').on('click', '.btnHapus', function(a) {
-            a.preventDefault();
-            let idBerita = $(this).closest('.btnHapus').attr('idBerita');
-            swal.fire({
-                title: "Apakah anda ingin menghapus data ini?",
-                showCancelButton: true,
-                confirmButtonText: 'Setuju',
-                cancelButtonText: `Batal`,
-                confirmButtonColor: 'red'
 
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    //Ajax Delete
-                    $.ajax({
-                        type: 'DELETE',
-                        url: 'berita/hapus',
-                        data: {
-                            id_berita: idBerita,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        success: function(data) {
-                            if (data.success) {
-                                swal.fire('Berhasil di hapus!', '', 'success').then(function() {
-                                    //Refresh Halaman
-                                    location.reload();
-                                });
-                            }
+
+<script type="module">
+    $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        a.preventDefault();
+        let idBerita = $(this).closest('.btnHapus').attr('idBerita');
+        swal.fire({
+            title: "Apakah anda ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonText: 'Setuju',
+            cancelButtonText: `Batal`,
+            confirmButtonColor: 'red'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //Ajax Delete
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'berita/hapus',
+                    data: {
+                        id_berita: idBerita,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function() {
+                                //Refresh Halaman
+                                location.reload();
+                            });
                         }
-                    });
-                }
-            });
+                    }
+                });
+            }
         });
-    </script>
-
+    });
+    $(document).ready(function() {
+        $('.DataTable').DataTable();
+    });
+</script>
 @endsection

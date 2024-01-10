@@ -28,7 +28,7 @@
                                         <br />
                                         <input type="radio" id="baik" {{ $item->kondisi_properti == 'Baik' ||  $item->kondisi_properti == 'baik' ? 'checked' : '' }} name="kondisi_properti" value="Baik" />
                                         <label for="baik">Baik</label>
-                                        <input type="radio" id="buruk" {{ $item->kondisi_properti == 'buruk' || $item->kondisi_properti ==  'buruk' ? 'checked' : '' }}  name="kondisi_properti" value="Buruk" />
+                                        <input type="radio" id="buruk" {{ $item->kondisi_properti == 'Buruk' || $item->kondisi_properti ==  'buruk' ? 'checked' : '' }}  name="kondisi_properti" value="Buruk" />
                                         <label for="buruk">Buruk</label>
                                     </div>
                                     <div class="form-group">

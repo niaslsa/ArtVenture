@@ -43,7 +43,6 @@
                             </div>
                         @endforeach
                     </form>
-                    {{-- @endforeach --}}
                 </div>
 
             </div>

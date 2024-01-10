@@ -50,4 +50,4 @@ class AkunController extends Controller
             Session::regenerateToken();
             return redirect('/login');
         }
-}
+    }

@@ -41,7 +41,7 @@
                                     <label>Foto Properti</label>
                                     <br>
                                     <img src="{{ url('foto') . '/' . $item->foto_properti }} "
-                                        style="max-width: 100px; height: auto;" alt="Profile" />
+                                        style="max-width: 200px; height: auto;" alt="Profile" />
                                 </div>
 
                             </div>

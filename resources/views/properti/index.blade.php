@@ -33,7 +33,7 @@
                                 <td>
                                     @if ($p->foto_properti)
                                         <img src="{{ url('foto') . '/' . $p->foto_properti }} "
-                                            style="max-width: 150px; height: auto;" />
+                                            style="max-width: 250px; height: auto;" />
                                     @endif
                                 </td>
                                 <td>

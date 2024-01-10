@@ -12,7 +12,7 @@
 
                 <hr>
                 <a href="/mitra/tambah" style="margin-bottom: 10px">
-                    <btn class="btn btn-lg btn-success mb-4">Tambah Data Mitra</btn>
+                    <button class="btn btn-lg btn-success mb-4">Tambah Data Mitra</button>
                 </a>
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
@@ -39,12 +39,12 @@
                                 <td>
 
                                     <a href="mitra/edit/{{ $l->id_mitra }}">
-                                        <btn class="btn btn-primary">EDIT</btn>
+                                        <button class="btn btn-primary">EDIT</button>
                                     </a>
                                     <a href="mitra/detail/{{ $l->id_mitra }}">
-                                        <btn class="btn btn-primary">DETAIL</btn>
+                                        <button class="btn btn-primary">DETAIL</button>
                                     </a>
-                                    <btn class="btn btn-danger btnHapus" idMitra="{{ $l->id_mitra }}">HAPUS</btn>
+                                    <button class="btn btn-danger btnHapus" idMitra="{{ $l->id_mitra }}">HAPUS</button>
                                 </td>
                             </tr>
                         @endforeach

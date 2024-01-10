@@ -43,6 +43,11 @@ class AkunSeeder extends Seeder
                     'role' => 'staff_sarana',
                     'password' => Hash::make('123')
                 ],
+                [
+                    'username' => 'nafesa',
+                    'role' => 'jurnalis',
+                    'password' => Hash::make('jurnalis')
+                ]
 
             ];
     

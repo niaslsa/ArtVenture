@@ -5,7 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertiController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\BeritaController;
-use App\Http\COntrollers\PenyewaanController;
+use App\Http\Controllers\PenyewaanController;
 use App\Models\Penyewaan;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Login
-// Route::middleware(['g'])->group(function () {
 Route::get('login', [AkunController::class, 'index'])->name('login');
 Route::post('login', [AkunController::class, 'login']);
 // });
