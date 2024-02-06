@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Cetak Data</title>
@@ -32,6 +33,32 @@
                     @endforeach
                 </tbody>
             </table>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Cetak Data</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped mt-5">
+            <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Berita</th>
+                <th>Isi Berita</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($berita as $n)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{ $n->nama_berita }}</td>
+                <td>{{ $n->isi_berita }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+              </table>
+>>>>>>> 84c228f3233b17e8fc6c7d1cff91780b05c2427c
         </div>
     </div>
     <!-- Optional JavaScript -->

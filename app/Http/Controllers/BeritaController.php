@@ -64,48 +64,22 @@ class BeritaController extends Controller
         $data = $request->validate([
             'nama_berita' => 'required',
             'isi_berita' => 'required',
-            'foto_berita' => 'sometimes',
+            'foto_berita' => 'sometimes', 
         ]);
 
-        $foto_berita = null;
 
         if ($request->hasFile('foto_berita') && $request->file('foto_berita')->isValid()) {
             $foto_file = $request->file('foto_berita');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
             $foto_file->move(public_path('foto'), $foto_nama);
-            $foto_berita = $foto_nama;
+            $data['foto_berita'] = $foto_nama;
         }
 
-        $result = DB::statement('CALL CreateBerita(?, ?, ?)', [$data['nama_berita'], $data['isi_berita'], $foto_berita]);
-
-        if ($result) {
-            return redirect('/berita')->with('success', 'Data berita baru berhasil ditambahkan');
-        }
-
-        return back()->with('error', 'Data berita gagal ditambahkan');
+        if ($berita->create($data)){
+            return redirect('/berita')->with('success','Data berita  baru berhasil ditambahkan');
     }
-
-    // public function store(Request $request, Berita $berita)
-    // {
-    //     $data = $request->validate([
-    //         'nama_berita' => 'required',
-    //         'isi_berita' => 'required',
-    //         'foto_berita' => 'sometimes', 
-    //     ]);
-
-
-    //     if ($request->hasFile('foto_berita') && $request->file('foto_berita')->isValid()) {
-    //         $foto_file = $request->file('foto_berita');
-    //         $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
-    //         $foto_file->move(public_path('foto'), $foto_nama);
-    //         $data['foto_berita'] = $foto_nama;
-    //     }
-
-    //     if ($berita->create($data)){
-    //         return redirect('/berita')->with('success','Data berita  baru berhasil ditambahkan');
-    // }
-    // return back()->with('error','Data berita gagal ditambahkan');
-    // }
+    return back()->with('error','Data berita gagal ditambahkan');
+    }
 
     /**
      * Display the specified resource.
@@ -198,12 +172,15 @@ class BeritaController extends Controller
 
         return response()->json($pesan);
     }
-    
+
+
     public function cetakBerita(Berita $berita)
+
     {
         $berita = $berita->all();
         $pdf = Pdf::loadView('berita.cetak',['berita' => $berita]);
         return $pdf->download('berita.pdf');
-    
+
     }
+
 }

@@ -68,6 +68,7 @@
     </div>
     </div>
     </div>
+
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
@@ -81,6 +82,9 @@
             });
         });
 
+
+
+<script type="module">
     $('.DataTable tbody').on('click', '.btnHapus', function(a) {
         a.preventDefault();
         let idBerita = $(this).closest('.btnHapus').attr('idBerita');
@@ -112,9 +116,13 @@
                 });
             }
         });
-    });
-    $(document).ready(function() {
-        $('.DataTable').DataTable();
-    });
+
+
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
+        });
+ 
+    }
+   
 </script>
 @endsection
