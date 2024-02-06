@@ -38,6 +38,12 @@
                                     <label for="buruk">Buruk</label>
                                 </div>
                                 <div class="form-group">
+                                    <label>Penyewaan</label>
+                                    <br />
+                                    <input type="text" class="form-control" name="penyewaan"
+                                    value="{{ $item->penyewaan }}" />
+                                </div>
+                                <div class="form-group">
                                     <label>Foto Properti</label>
                                     <br>
                                     <img src="{{ url('foto') . '/' . $item->foto_properti }} "

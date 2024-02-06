@@ -14,12 +14,11 @@
             <table class="table table-striped mt-5">
             <thead>
             <tr>
-                <th>No</th>
-                <th>Id Penyewaan</th>
-                <th>Waktu Penyewaan</th>
-                {{-- <th>Tipe Obat</th>
-                <th>Stok Obat</th>
-                <th>Tanggal EXP</th> --}}
+                <th>ID Penyewaan</th>
+                <th>ID Lahan</th>
+                <th>Nama Lahan</th>
+                <th>ID Properti</th>
+                <th>Nama Properti</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +26,11 @@
             <tr>
                 <td>{{$loop->iteration}}</td>
                 <td>{{ $n->id_penyewaan }}</td>
-                <td>{{ $n->waktu_penyewaan }}</td>
-                {{-- <td>{{ $a->stok_obat }}</td>
-                <td>{{ $a->tgl_exp }}</td> --}}
+                <td>{{ $n->id_lahan }}</td>
+                <td>{{ $n->nama_lahan }}</td>
+                <td>{{ $n->id_properti }}</td>
+                <td>{{ $n->nama_properti }}</td>
+              
             </tr>
             @endforeach
         </tbody>

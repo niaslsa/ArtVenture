@@ -12,20 +12,39 @@
                 <div class="card-body">
                     <form method="POST" action="update" enctype="multipart/form-data">
                         @foreach ($lahan as $item)
-                        <input type="hidden" class="form-control" name="id_lahan" value="{{ $item->id_lahan }}" />
+                            <input type="hidden" class="form-control" name="id_lahan" value="{{ $item->id_lahan }}" />
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Id Lahan</label>
-                                        <input type="text" class="form-control" name="id_lahan" value="{{ $item->id_lahan }}" />
+                                        <input type="text" class="form-control" name="id_lahan"
+                                            value="{{ $item->id_lahan }}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Lahan</label>
-                                        <input type="text" class="form-control" name="nama_lahan" value="{{ $item->nama_lahan }}" />
+                                        <input type="text" class="form-control" name="nama_lahan"
+                                            value="{{ $item->nama_lahan }}" />
                                     </div>
                                     <div class="form-group">
                                         <label>Lokasi Lahan</label>
-                                        <input type="text" class="form-control" name="lokasi_lahan" value="{{ $item->lokasi_lahan }}" />
+                                        <input type="text" class="form-control" name="lokasi_lahan"
+                                            value="{{ $item->lokasi_lahan }}" />
+                                    </div>
+                                    <div class="form-grou">
+                                        <label>Status Penyewaan</label>
+                                        <div>
+                                            @foreach ($statusPenyewaan as $option)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" style="cursor: pointer" type="radio"
+                                                        id="{{ $option }}" name="penyewaan"
+                                                        value="{{ $option }}"
+                                                        {{ $item->penyewaan === $option ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="{{ $option }}">
+                                                        {{ $option }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Foto Lahan</label>

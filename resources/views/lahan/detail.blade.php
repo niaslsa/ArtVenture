@@ -33,6 +33,12 @@
                                     value="{{ $item->lokasi_lahan }}" />
                                 </div>
                                 <div class="form-group">
+                                    <label>Penyewaan</label>
+                                    <br />
+                                    <input type="text" class="form-control" name="penyewaan"
+                                    value="{{ $item->penyewaan }}" />
+                                </div>
+                                <div class="form-group">
                                     <label>Foto Lahan</label>
                                     <br>
                                     <img src="{{ url('foto') . '/' . $item->foto_lahan }} "

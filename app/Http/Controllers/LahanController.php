@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lahan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class LahanController extends Controller
@@ -49,7 +50,6 @@ class LahanController extends Controller
             'foto_lahan' => 'required',
         ]);
 
-
         if ($request->hasFile('foto_lahan') && $request->file('foto_lahan')->isValid()) {
             $foto_file = $request->file('foto_lahan');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
@@ -57,7 +57,7 @@ class LahanController extends Controller
             $data['foto_lahan'] = $foto_nama;
         }
 
-        if ($lahan->create($data)) {
+        if (DB::statement("CALL CreateLahan(?,?,?)", [$data['nama_lahan'], $data['lokasi_lahan'], $data['foto_lahan']])) {
             return redirect('/lahan')->with('success', 'Data lahan baru berhasil ditambahkan');
         }
         return back()->with('error', 'Data lahan gagal ditambahkan');
@@ -76,8 +76,11 @@ class LahanController extends Controller
      */
     public function edit(Lahan $lahan, string $id)
     {
+        $statusPenyewaan = ['Ya', 'Tidak'];
+
         $data = [
-            'lahan' =>  Lahan::where('id_lahan', $id)->get()
+            'lahan' =>  Lahan::where('id_lahan', $id)->get(),
+            'statusPenyewaan' => $statusPenyewaan
         ];
 
         return view('lahan.edit', $data);
@@ -101,6 +104,7 @@ class LahanController extends Controller
         $data = $request->validate([
             'nama_lahan' => ['required'],
             'lokasi_lahan' => ['required'],
+            'penyewaan' => ['sometimes'],
             'foto_lahan' => ['sometimes'],
         ]);
 

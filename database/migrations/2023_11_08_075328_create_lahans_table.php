@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->integer('id_ss',false);
             $table->string('nama_lahan',25);
             $table->string('lokasi_lahan',255);
+            $table->enum('penyewaan', ['Ya', 'Tidak'])->default('Tidak');
             $table->text('foto_lahan');
 
             //Foreign Key
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lahans');
+        Schema::dropIfExists('lahan');
     }
 };

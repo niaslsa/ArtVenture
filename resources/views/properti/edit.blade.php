@@ -31,6 +31,22 @@
                                         <input type="radio" id="buruk" {{ $item->kondisi_properti == 'Buruk' || $item->kondisi_properti ==  'buruk' ? 'checked' : '' }}  name="kondisi_properti" value="Buruk" />
                                         <label for="buruk">Buruk</label>
                                     </div>
+                                    <div class="form-grou">
+                                        <label>Status Penyewaan</label>
+                                        <div>
+                                            @foreach ($statusPenyewaan as $option)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" style="cursor: pointer" type="radio"
+                                                        id="{{ $option }}" name="penyewaan"
+                                                        value="{{ $option }}"
+                                                        {{ $item->penyewaan === $option ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="{{ $option }}">
+                                                        {{ $option }}
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label>Foto Properti</label>
                                         <input type="file" class="form-control" name="foto_properti" />

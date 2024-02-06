@@ -75,8 +75,11 @@ class PropertiController extends Controller
      */
     public function edit(Properti $properti, string $id)
     {
+        $statusPenyewaan = ['Ya', 'Tidak'];
+
         $data = [
-            'properti' =>  Properti::where('id_properti', $id)->get()
+            'properti' =>  Properti::where('id_properti', $id)->get(),
+            'statusPenyewaan' => $statusPenyewaan
         ];
 
         return view('properti.edit', $data);
@@ -101,6 +104,7 @@ class PropertiController extends Controller
         $data = $request->validate([
             'nama_properti' => 'required',
             'kondisi_properti' => 'required',
+            'penyewaan' => 'sometimes',
             'foto_properti' => 'sometimes|file', 
         ]);
 

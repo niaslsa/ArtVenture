@@ -18,7 +18,7 @@
                 <div class="row justify-content-center align-items-center h-100 width: 775px;">
                     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div class="card shadow-2-strong "
-                            style="border-radius: 4rem; height: 724px; justify-content: center; width: 775px; background-color: #ffff;">
+                            style="border-radius: 4rem; height: 780px; justify-content: center; width: 700px; background-color: #ffff;">
 
 
                             <div class="card-body p-5 text-center">
