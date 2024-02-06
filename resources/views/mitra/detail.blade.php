@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     <label>Kontak Mitra</label>
                                     <input type="text" class="form-control" name="kontak_mitra"
-                                        value="{{ $item->kontak mitra }}" />
+                                        value="{{ $item->kontak_mitra }}" />
 </div>
                             </div>
                         </div>

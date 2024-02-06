@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mitra;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class MitraController extends Controller
@@ -16,14 +18,30 @@ class MitraController extends Controller
     {
         $this->userModel = new Mitra;
     }
-    public function index(Mitra $mitra)
+
+    public function index()
     {
         $data = [
-            'mitra' => $this->userModel->all()
+            'mitra' => DB::table('view_mitra')->get(),
+            'totalMitra' => DB::select("SELECT CountMitra() as totalMitra")[0]->totalMitra
         ];
-        // dd($data);
+
         return view('mitra.index', $data);
     }
+
+
+    // public function index(Mitra $mitra)
+    // {
+
+    //     $totalMitra = DB::select("SELECT CountMitra() as totalMitra")[0]->totalMitra;
+
+    //     $data = [
+    //         'mitra' => $this->userModel->all(),
+    //         'totalMitra' => $totalMitra
+    //     ];
+    //     // dd($data);
+    //     return view('mitra.index', $data);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -41,15 +59,15 @@ class MitraController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Mitra $mitra)
+
+    public function store(Request $request)
     {
         $data = $request->validate([
             'nama_mitra' => 'required',
-            'foto_mitra' => 'sometimes', 
+            'foto_mitra' => 'sometimes',
             'bisnis_mitra' => 'required',
             'kontak_mitra' => 'required',
         ]);
-
 
         if ($request->hasFile('foto_mitra') && $request->file('foto_mitra')->isValid()) {
             $foto_file = $request->file('foto_mitra');
@@ -58,11 +76,42 @@ class MitraController extends Controller
             $data['foto_mitra'] = $foto_nama;
         }
 
-        if ($mitra->create($data)){
-            return redirect('/mitra')->with('success','Data mitra baru berhasil ditambahkan');
+        $result = DB::statement('CALL CreateMitra(?, ?, ?, ?)', [
+            $data['nama_mitra'],
+            $data['foto_mitra'],
+            $data['bisnis_mitra'],
+            $data['kontak_mitra'],
+        ]);
+
+        if ($result) {
+            return redirect('/mitra')->with('success', 'Data mitra baru berhasil ditambahkan');
+        }
+
+        return back()->with('error', 'Data mitra gagal ditambahkan');
     }
-    return back()->with('error','Data mitra gagal ditambahkan');
-    }
+
+    // public function store(Request $request, Mitra $mitra)
+    // {
+    //     $data = $request->validate([
+    //         'nama_mitra' => 'required',
+    //         'foto_mitra' => 'sometimes',
+    //         'bisnis_mitra' => 'required',
+    //         'kontak_mitra' => 'required',
+    //     ]);
+
+
+    //     if ($request->hasFile('foto_mitra') && $request->file('foto_mitra')->isValid()) {
+    //         $foto_file = $request->file('foto_mitra');
+    //         $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+    //         $foto_file->move(public_path('foto'), $foto_nama);
+    //         $data['foto_mitra'] = $foto_nama;
+    //     }
+
+    //     if ($mitra->create($data)) {
+    //         return redirect('/mitra')->with('success', 'Data mitra baru berhasil ditambahkan');
+    //     }
+    //     return back()->with('error', 'Data mitra gagal ditambahkan');
+    // }
 
     /**
      * Display the specified resource.
@@ -82,7 +131,6 @@ class MitraController extends Controller
         ];
 
         return view('mitra.edit', $data);
-    
     }
 
     public function detail(mitra $mitra, string $id)
@@ -92,7 +140,6 @@ class MitraController extends Controller
         ];
 
         return view('mitra.detail', $data);
-    
     }
 
     /**
@@ -103,7 +150,7 @@ class MitraController extends Controller
         $data = $request->validate([
             'nama_mitra' => 'required',
             'bisnis_mitra' => 'required',
-            'foto_mitra' => 'sometimes', 
+            'foto_mitra' => 'sometimes',
             'kontak_mitra' => 'required',
         ]);
 
@@ -154,5 +201,12 @@ class MitraController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function cetakMitra(Mitra $mitra)
+    {
+        $mitra = $mitra->all();
+        $pdf = Pdf::loadView('mitra.cetak', ['mitra' => $mitra]);
+        return $pdf->download('mitra.pdf');
     }
 }

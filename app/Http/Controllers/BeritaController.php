@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
@@ -17,14 +18,30 @@ class BeritaController extends Controller
     {
         $this->userModel = new Berita;
     }
-    public function index(Berita $berita)
+
+    public function index()
     {
         $data = [
-            'berita' => $this->userModel->all()
+            'berita' => DB::table('view_berita')->get(),
+            'totalBerita' => DB::select("SELECT CountBerita() as totalBerita")[0]->totalBerita
         ];
-        // dd($data);
+
         return view('berita.index', $data);
     }
+
+
+    // public function index(Berita $berita)
+    // {
+
+    //     $totalBerita = DB::select("SELECT CountBerita() as totalBerita")[0]->totalBerita;
+
+    //     $data = [
+    //         'berita' => $this->userModel->all()
+    //         , 'totalBerita' => $totalBerita
+    //     ];
+    //     // dd($data);
+    //     return view('berita.index', $data);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -42,7 +59,7 @@ class BeritaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Berita $berita)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'nama_berita' => 'required',
@@ -155,12 +172,15 @@ class BeritaController extends Controller
 
         return response()->json($pesan);
     }
+
+
     public function cetakBerita(Berita $berita)
+
     {
         $berita = $berita->all();
         $pdf = Pdf::loadView('berita.cetak',['berita' => $berita]);
         return $pdf->download('berita.pdf');
-    
-    }
-}
 
+    }
+
+}
