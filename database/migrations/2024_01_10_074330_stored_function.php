@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared('DROP FUNCTION IF EXISTS CountPenyewaan');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPenyewaan');
 
         DB::unprepared('
         CREATE FUNCTION CountTotalPenyewaan() RETURNS INT

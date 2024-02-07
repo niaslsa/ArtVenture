@@ -34,6 +34,19 @@ return new class extends Migration
             m.kontak_mitra AS kontak_mitra
         FROM mitra m
     ");
+
+    DB::unprepared("DROP VIEW IF EXISTS view_lahan");
+        DB::unprepared("
+            CREATE VIEW view_lahan AS
+            SELECT
+                id_lahan,
+                nama_lahan,
+                lokasi_lahan,
+                penyewaan,
+                foto_lahan
+            FROM lahan
+        ");
+
     }
 
     /**
