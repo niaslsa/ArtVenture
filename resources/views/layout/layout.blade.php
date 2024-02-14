@@ -378,7 +378,7 @@
                                 <span class="text nav-text">Berita</span>
                             </a>
                         </li>
-                    @endif
+                     @endif 
 
                     @if (Auth::check() && Auth::user()->role == 'staff_ticketing')
                         <li class="nav-link">
@@ -389,7 +389,7 @@
                         </li>
                     @endif
 
-                    @if (Auth::user()->role == 'staff_sarana')
+                    @if (Auth::check() && Auth::user()->role == 'staff_sarana')
                         <li class="nav-link">
                             <a href="/lahan">
                                 <i class='bx bx-buildings icon'></i>
@@ -472,7 +472,6 @@
             }
         });
     </script>
-
 </body>
 
 </html>

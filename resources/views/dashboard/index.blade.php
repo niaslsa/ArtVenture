@@ -1,455 +1,232 @@
-<!DOCTYPE html>
-  <!-- Coding by CodingLab | www.codinglabweb.com -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!----===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    
-    <!--<title>Dashboard Sidebar Menu</title>--> 
-</head>
-<body>
-    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <!--<img src="logo.png" alt="">-->
-                </span>
+@extends('layout.layout')
+@section('title', 'Dashboard')
+@section('content')
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .card-body{
+        border-radius: 1rem
+    }
 
-                <div class="text logo-text">
-                    <span class="name">DashBuddy</span>
-                </div>
-            </div>
+    .title{
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between
+    }
 
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
+    .title img{
+        width: 40px;
+        height: 40px;
+    }
 
-        <div class="menu-bar">
-            <div class="menu">
+    .row{
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 30px;
+    }
 
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
-
-                <ul class="menu-links">
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-news icon' ></i>
-                            <span class="text nav-text">Berita</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-barcode icon'></i>
-                            <span class="text nav-text">Tiketing</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon' ></i>
-                            <span class="text nav-text">Lahan</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Properti</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="/penyewaan">
-                            <i class='bx bx-heart icon' ></i>
-                            <span class="text nav-text">Penyewaan</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon' ></i>
-                            <span class="text nav-text">Mitra</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="bottom-content">
-                <li class="">
-                    <a href="#">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
-
-                
-                
-            </div>
-        </div>
-
-        <style>
-            /* Google Font Import - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-:root{
-    /* ===== Colors ===== */
-    --body-color: #ffffff;
-    --sidebar-color: #757171;
-    --primary-color: #555555;
-    --primary-color-light: #ffffff;
-    --toggle-color: #DDD;
-    --text-color: #555555;
-
-    /* ====== Transition ====== */
-    --tran-03: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.3s ease;
+    #kotak1{
+        background-color: #757171;
+    }
+    #kotak2{
+        background-color: #BDBDBD;
+    }
+    #kotak3{
+        background-color: #D9D9D9;
+    }
+    #card-text1{
+        color: #D9D9D9
+    }
+    #card-title1{
+        color: #D9D9D9
+    }
+    .card{
+        width: 300px;
+        height: 150px;
+        border-radius: 1rem;
+    }
+    .card-text{
+        margin-top: 20px;
+    }
+    .title{
+        margin-left: 30px;
+        margin-top: 40px;
+    }
+    .img{
+        margin-left: 110px;
+        margin-top: 20px;
+        width: 150px;
+        height: 150px;
+    }
+    .loglink{
+        /* text-decoration: none; */
+        color: #D9D9D9;
+    }
+    #mychart{
+        margin-top: 200px;
+    }
+    *{
+  margin: 0;
+  padding: 0;
+  font-family: Sans-serif;
 }
 
 body{
-    min-height: 100vh;
-    background-color: var(--body-color);
-    transition: var(--tran-05);
+  background-color: #eee;
+
+}
+nav{
+  margin: 20px;
+  position: relative;
+}
+ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.display-picture{
+  margin-left: auto;
+}
+.display-picture img{
+  width: 50px;
+  border-radius: 50%;
+  border:2px solid #fff;
+}
+.display-picture img:hover{
+border:2px solid #757171;
+}
+.card{
+  transition: 0.5s ease;
 }
 
-::selection{
-    background-color: var(--primary-color);
-    color: #fff;
+.card ul{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background: #757171;
+  position: absolute;
+  top: 4rem;
+  right:0rem;
+border-radius: 10px;
+padding: 10px 50px 10px 20px;
+}
+.card ul li{
+ 
+  padding: 5px 0;
+  color: #FFF;
+  font-size: 14px;
+}
+.hidden{
+  display: none;
+}
+a{
+  text-decoration: none;
+  color:#fff;
 }
 
-body.dark{
-    --body-color: #18191a;
-    --sidebar-color: #242526;
-    --primary-color: #3a3b3c;
-    --primary-color-light: #3a3b3c;
-    --toggle-color: #fff;
-    --text-color: #ccc;
-}
+</style>
 
-/* ===== Sidebar ===== */
- .sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    padding: 10px 14px;
-    background: var(--sidebar-color);
-    transition: var(--tran-05);
-    z-index: 100;  
-}
-.sidebar.close{
-    width: 88px;
-}
+<div class="title">
+    <div>
+        <h1>Dashboard</h1>
+        <h5>selamat datang, admin!</h5>
+    </div>
+    {{-- <ul class="navbar-nav ms-auto d-flex flex-row gap-3">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="https://th.bing.com/th/id/R.3cf356eb37f97a53f6adcb70f885f968?rik=irVP%2bEr%2f7LuDyA&riu=http%3a%2f%2fimages5.fanpop.com%2fimage%2fphotos%2f31200000%2fAnime-anime-31223028-1280-1024.jpg&ehk=k9X%2b%2fJ%2bRZZ8JD2V1yUKky%2bLjiED9%2fq4e08CoAeRokzA%3d&risl=&pid=ImgRaw&r=0" class="rounded-circle" height="42" alt="" width="42" loading="lazy" />
+            </a>
+            <div class="dropdown-menu dropdown-menu-left h-1" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item my-0" href="/dashboard/siswa/profil">Profil</a>
+                <hr>
+                <a href="{{ url('/logout') }}" class="dropdown-item">Logout</a>
+            </div>
+        </li>
+    </ul> --}}
+    <ul>
+        <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt=""></a><!--Profile Image-->
+        </ul>
+        <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
+          <ul><!--MENU-->
+            <li><a href="#">Profile</li></a>
+            <li><a href="#">Account</li></a>
+            <li><a href="#">Settings</li></a>
+            <li><a href="#">Log Out</li></a>
+          </ul>
+        </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Kotak pertama -->
+            <div class="card">
+                <div class="card-body" id="kotak1">
+                    <!-- Isi kotak pertama -->
+                    <h5 class="card-title" id="card-title1">Log Activity</h5>
+                    <a class="loglink" href="#S">klik disini untuk melihat Log Activity.</a>
+                    <img class="img" src="{{ asset('foto/log.png') }}" alt="Deskripsi Gambar">
+                </div>
+            </div>
+        </div>
 
-/* ===== Reusable code - Here ===== */
-.sidebar li{
-    height: 50px;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
+        <div class="col-md-4">
+            <!-- Kotak kedua -->
+            <div class="card">
+                <div class="card-body" id="kotak2">
+                    <!-- Isi kotak kedua -->
+                    <h5 class="card-title">Kotak 2</h5>
+                    <p class="card-text">Jumlah wisatawan</p>
+                    <img class="img" src="{{ asset('foto/wisatawan.png') }}" alt="Deskripsi Gambar">
+                </div>
+            </div>
+        </div>
 
-.sidebar header .image,
-.sidebar .icon{
-    min-width: 60px;
-    border-radius: 6px;
-}
+        <div class="col-md-4">
+            <!-- Kotak ketiga -->
+            <div class="card">
+                <div class="card-body" id="kotak3">
+                    <!-- Isi kotak ketiga -->
+                    <h5 class="card-title">Kotak 3</h5>
+                    <p class="card-text">Jumlah penyewaan</p>
+                    <img class="img" src="{{ asset('foto/penyewaan.png') }}" alt="Deskripsi Gambar">
+                </div>
+            </div>
+        </div>
+            
+    <div class="divchart">
+        <canvas id="myChart" style="margin-top: 200px; height: 200px;"></canvas>
+    </div>
 
-.sidebar .icon{
-    min-width: 60px;
-    border-radius: 6px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.sidebar .text,
-.sidebar .icon{
-    color: var(--text-color);
-    transition: var(--tran-03);
-}
-
-.sidebar .text{
-    font-size: 17px;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 1;
-}
-.sidebar.close .text{
-    opacity: 0;
-}
-/* =========================== */
-
-.sidebar header{
-    position: relative;
-}
-
-.sidebar header .image-text{
-    display: flex;
-    align-items: center;
-}
-.sidebar header .logo-text{
-    display: flex;
-    flex-direction: column;
-}
-header .image-text .name {
-    margin-top: 2px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-header .image-text .profession{
-    font-size: 16px;
-    margin-top: -2px;
-    display: block;
-}
-
-.sidebar header .image{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sidebar header .image img{
-    width: 40px;
-    border-radius: 6px;
-}
-
-.sidebar header .toggle{
-    position: absolute;
-    top: 50%;
-    right: -25px;
-    transform: translateY(-50%) rotate(180deg);
-    height: 25px;
-    width: 25px;
-    background-color: var(--primary-color);
-    color: var(--sidebar-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    transition: var(--tran-05);
-}
-
-body.dark .sidebar header .toggle{
-    color: var(--text-color);
-}
-
-.sidebar.close .toggle{
-    transform: translateY(-50%) rotate(0deg);
-}
-
-.sidebar .menu{
-    margin-top: 40px;
-}
-
-.sidebar li.search-box{
-    border-radius: 6px;
-    background-color: var(--primary-color-light);
-    cursor: pointer;
-    transition: var(--tran-05);
-}
-
-.sidebar li.search-box input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: var(--primary-color-light);
-    color: var(--text-color);
-    border-radius: 6px;
-    font-size: 17px;
-    font-weight: 500;
-    transition: var(--tran-05);
-}
-.sidebar li a{
-    list-style: none;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: var(--tran-03);
-}
-
-.sidebar li a:hover{
-    background-color: var(--primary-color);
-}
-.sidebar li a:hover .icon,
-.sidebar li a:hover .text{
-    color: var(--sidebar-color);
-}
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text{
-    color: var(--text-color);
-}
-
-.sidebar .menu-bar{
-    height: calc(100% - 55px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow-y: scroll;
-}
-.menu-bar::-webkit-scrollbar{
-    display: none;
-}
-.sidebar .menu-bar .mode{
-    border-radius: 6px;
-    background-color: var(--primary-color-light);
-    position: relative;
-    transition: var(--tran-05);
-}
-
-.menu-bar .mode .sun-moon{
-    height: 50px;
-    width: 60px;
-}
-
-.mode .sun-moon i{
-    position: absolute;
-}
-.mode .sun-moon i.sun{
-    opacity: 0;
-}
-body.dark .mode .sun-moon i.sun{
-    opacity: 1;
-}
-body.dark .mode .sun-moon i.moon{
-    opacity: 0;
-}
-
-.menu-bar .bottom-content .toggle-switch{
-    position: absolute;
-    right: 0;
-    height: 100%;
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 40px;
-    border-radius: 25px;
-    background-color: var(--toggle-color);
-    transition: var(--tran-05);
-}
-
-.switch::before{
-    content: '';
-    position: absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background-color: var(--sidebar-color);
-    transition: var(--tran-04);
-}
-
-body.dark .switch::before{
-    left: 20px;
-}
-
-.home{
-    position: absolute;
-    top: 0;
-    top: 0;
-    left: 250px;
-    height: 100vh;
-    width: calc(100% - 250px);
-    background-color: var(--body-color);
-    transition: var(--tran-05);
-}
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 12px 60px;
-}
-
-.sidebar.close ~ .home{
-    left: 78px;
-    height: 100vh;
-    width: calc(100% - 78px);
-}
-body.dark .home .text{
-    color: var(--text-color);
-}
-        </style>
-
-    </nav>
-
-    <section class="home">
-        <div class="text">Dashboard</div>
-    </section>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: @json($data['labels']),
+                    datasets: [{
+                        label: 'Example Chart',
+                        data: @json($data['data']),
+                        backgroundColor: '#757171', // Warna latar belakang
+                        borderColor: '#757171', // Warna garis
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+        let card = document.querySelector(".card"); //declearing profile card element
+let displayPicture = document.querySelector(".display-picture"); //declearing profile picture
 
-
-toggle.addEventListener("click" , () =>{
-    sidebar.classList.toggle("close");
-})
-
-searchBtn.addEventListener("click" , () =>{
-    sidebar.classList.remove("close");
-})
-
-modeSwitch.addEventListener("click" , () =>{
-    body.classList.toggle("dark");
-    
-    if(body.classList.contains("dark")){
-        modeText.innerText = "Light mode";
-    }else{
-        modeText.innerText = "Dark mode";
-        
-    }
-});
+displayPicture.addEventListener("click", function() { //on click on profile picture toggle hidden class from css
+card.classList.toggle("hidden")})
     </script>
-
-</body>
-</html>
+    </div>
+</div>
+@endsection

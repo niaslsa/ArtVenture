@@ -6,7 +6,10 @@ use App\Http\Controllers\PropertiController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PenyewaanController;
+use App\Http\Controllers\StaffTiketingController;
+use App\Http\Controllers\TiketController;
 use App\Models\Penyewaan;
+use App\Models\StaffTiketing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +28,7 @@ Route::post('login', [AkunController::class, 'login']);
 // });
 
 // Dashboard
-// Route::prefix('dashboard')->group(function () {});
+Route::get('dashboard', [DashboardController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     // Properti
@@ -98,3 +101,32 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('logout', [AkunController::class, 'logout']);
 });
+
+ // StaffTiketing
+ Route::prefix('stafftiketing')
+//  ->middleware(['akses:staff_tiketing'])
+ ->group(function () {
+     Route::get('/', [StaffTiketingController::class, 'index']);
+     Route::get('/tambah', [StaffTiketingController::class, 'create']);
+     Route::post('/simpan', [StaffTiketingController::class, 'store']);
+     Route::get('/edit/{id}', [StaffTiketingController::class, 'edit']);
+     Route::get('/detail/{id}', [StaffTiketingController::class, 'detail']);
+     Route::post('edit/simpan', [StaffTiketingController::class, 'update']);
+     Route::delete('/hapus', [StaffTiketingController::class, 'destroy']);
+     Route::get('/cetak', [StaffTiketing::class, 'cetakSt']);
+ });
+
+ Route::prefix('tiket')
+//  ->middleware(['akses:staff_tiketing'])
+ ->group(function () {
+     Route::get('/', [TiketController::class, 'index']);
+    //  Route::get('/tambah', [TiketController::class, 'create']);
+     Route::post('/simpan', [TiketController::class, 'store']);
+     Route::get('/edit/{id}', [TiketController::class, 'edit']);
+     Route::get('/detail/{id}', [TiketController::class, 'detail']);
+     Route::post('edit/simpan', [TiketController::class, 'update']);
+     Route::delete('/hapus', [TiketController::class, 'destroy']);
+     Route::get('/cetak', [StaffTiketing::class, 'cetakSt']);
+ });
+
+Route::get('logout', [AkunController::class, 'logout']);

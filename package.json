@@ -15,9 +15,10 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.11.2",
-        "datatable": "^2.0.2",
+        "chart.js": "^4.4.1",
+        "datatable": "^0.0.6",
         "datatables.net-bs5": "^1.13.8",
         "jquery": "^3.7.1",
-        "sweetalert2": "^11.10.1"
+        "sweetalert2": "^11.6.13"
     }
 }
