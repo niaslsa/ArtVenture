@@ -104,7 +104,7 @@ Route::middleware(['auth'])->group(function () {
 
  // StaffTiketing
  Route::prefix('stafftiketing')
-//  ->middleware(['akses:staff_tiketing'])
+ ->middleware(['akses:staff_ticketing'])
  ->group(function () {
      Route::get('/', [StaffTiketingController::class, 'index']);
      Route::get('/tambah', [StaffTiketingController::class, 'create']);
@@ -113,7 +113,7 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/detail/{id}', [StaffTiketingController::class, 'detail']);
      Route::post('edit/simpan', [StaffTiketingController::class, 'update']);
      Route::delete('/hapus', [StaffTiketingController::class, 'destroy']);
-     Route::get('/cetak', [StaffTiketing::class, 'cetakSt']);
+     Route::get('/cetak', [StaffTiketingController::class, 'cetakSt']);
  });
 
  Route::prefix('tiket')
@@ -126,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
      Route::get('/detail/{id}', [TiketController::class, 'detail']);
      Route::post('edit/simpan', [TiketController::class, 'update']);
      Route::delete('/hapus', [TiketController::class, 'destroy']);
-     Route::get('/cetak', [StaffTiketing::class, 'cetakSt']);
+     Route::get('/cetak', [TiketController::class, 'cetakSt']);
  });
 
 Route::get('logout', [AkunController::class, 'logout']);

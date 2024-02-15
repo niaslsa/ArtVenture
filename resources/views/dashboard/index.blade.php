@@ -6,7 +6,6 @@
     .card-body{
         border-radius: 1rem
     }
-
     .title{
         padding: 0 20px;
         display: flex;
@@ -33,12 +32,12 @@
     #kotak3{
         background-color: #D9D9D9;
     }
-    #card-text1{
+    /* #card-text1{
         color: #D9D9D9
     }
     #card-title1{
         color: #D9D9D9
-    }
+    } */
     .card{
         width: 300px;
         height: 150px;
@@ -58,31 +57,18 @@
         height: 150px;
     }
     .loglink{
-        /* text-decoration: none; */
+         text-decoration: none; 
         color: #D9D9D9;
     }
     #mychart{
         margin-top: 200px;
     }
-    *{
-  margin: 0;
-  padding: 0;
-  font-family: Sans-serif;
-}
 
 body{
   background-color: #eee;
 
 }
-nav{
-  margin: 20px;
-  position: relative;
-}
-ul{
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
+
 .display-picture{
   margin-left: auto;
 }
@@ -90,7 +76,7 @@ ul{
   width: 50px;
   border-radius: 50%;
   border:2px solid #fff;
-}
+} 
 .display-picture img:hover{
 border:2px solid #757171;
 }
@@ -106,8 +92,8 @@ border:2px solid #757171;
   position: absolute;
   top: 4rem;
   right:0rem;
-border-radius: 10px;
-padding: 10px 50px 10px 20px;
+    border-radius: 10px;
+    padding: 10px 50px 10px 20px;
 }
 .card ul li{
  
@@ -142,16 +128,18 @@ a{
             </div>
         </li>
     </ul> --}}
-    <ul>
-        <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt=""></a><!--Profile Image-->
-        </ul>
-        <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
-          <ul><!--MENU-->
-            <li><a href="#">Profile</li></a>
-            <li><a href="#">Account</li></a>
-            <li><a href="#">Settings</li></a>
-            <li><a href="#">Log Out</li></a>
-          </ul>
+        <div>
+            <ul>
+                <a href="#" class="display-picture"><img src="https://i.pravatar.cc/85" alt=""></a><!--Profile Image-->   
+            </ul>
+            <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
+            <ul><!--MENU-->
+                <li><a href="#">Profile</li></a>
+                <li><a href="#">Account</li></a>
+                <li><a href="#">Settings</li></a>
+                <li><a href="#">Log Out</li></a>
+            </ul>
+        </div>
         </div>
 </div>
 <div class="container">

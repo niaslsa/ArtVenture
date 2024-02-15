@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Akun;
 use App\Models\StaffTiketing;
 use Illuminate\Http\Request;
+use PDF;
 
 class StaffTiketingController extends Controller
 {
@@ -116,6 +117,19 @@ class StaffTiketingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+    public function detail(Request $request, StaffTiketing $stafftiketing, Akun $akun)
+    {
+        $data = [
+            'stafftiketting' => $stafftiketing->where('id_st' ,$request->id)->first(),
+            'akun' => $akun->get()
+        ];
+
+        return view('stafftiketing.detail', $data);
+    }
+
+
+
     public function destroy(StaffTiketing $staffTiketing, Request $request)
     {
         $id_st = $request->input('id_st');
@@ -137,5 +151,14 @@ class StaffTiketingController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function cetakSt(StaffTiketing $staffTiketing)
+    {
+        $data = [
+            'StaffTiketing' => $staffTiketing->get()
+        ];          
+        $pdf = PDF::loadView('presensi-pdf', $data);
+        return $pdf->download('presensi.pdf');
     }
 }
