@@ -20,7 +20,7 @@ class LahanController extends Controller
     public function index(Lahan $lahan)
     {
         $data = [
-            'lahan' => $this->userModel->all()
+            'lahan' => DB::table('view_lahan')->get(),
         ];
         
         return view('lahan.index', $data);
