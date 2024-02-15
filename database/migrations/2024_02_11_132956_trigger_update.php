@@ -84,6 +84,44 @@ return new class extends Migration
             END
         ');
 
+        // STAFF TIKETING UPDATE TRIGGER
+        DB::unprepared('
+            CREATE TRIGGER staff_tiketing_update_trigger
+            AFTER UPDATE ON staff_tiketing
+            FOR EACH ROW
+            BEGIN
+                DECLARE st_id INT;
+                DECLARE perubahan VARCHAR(255);
+                DECLARE update_message TEXT;
+
+                SELECT id_st INTO st_id FROM staff_tiketing WHERE id_st = NEW.id_st;
+
+                SET update_message = CONCAT("Staff Tiketing dengan nomor ID: ", st_id, " telah diupdate. Perubahan:");
+
+                IF OLD.id_akun != NEW.id_akun THEN
+                    SET perubahan = CONCAT("ID Akun dari ", OLD.id_akun, " ke ", NEW.id_akun);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.nama_st != NEW.nama_st THEN
+                    SET perubahan = CONCAT("Nama Staff Tiketing dari ", OLD.nama_st, " ke ", NEW.nama_st);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.kontak_st  != NEW.kontak_st  THEN
+                    SET perubahan = CONCAT("Kontak Staff Tiketing dari ", OLD.kontak_st , " ke ", NEW.kontak_st );
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.foto_st 	 != NEW.foto_st 	 THEN
+                    SET perubahan = CONCAT("Foto Staff Tiketing dari ", OLD.foto_st 	, " ke ", NEW.foto_st 	);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                INSERT INTO logs (logs) VALUES (update_message);
+            END
+        ');
+
     }
 
     /**
@@ -93,5 +131,6 @@ return new class extends Migration
     {
         DB::unprepared('DROP TRIGGER IF EXISTS mitra_update_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS berita_update_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS staff_tiketing_update_trigger');
     }
 };

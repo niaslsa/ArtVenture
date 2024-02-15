@@ -8,8 +8,6 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\StaffTiketingController;
 use App\Http\Controllers\TiketController;
-use App\Models\Penyewaan;
-use App\Models\StaffTiketing;
 use Illuminate\Support\Facades\Route;
 
 /*

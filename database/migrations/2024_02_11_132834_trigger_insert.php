@@ -39,6 +39,18 @@ return new class extends Migration
                 );
             END
         ');
+
+        // BERITA INSERT TRIGGER
+        DB::unprepared('
+            CREATE TRIGGER staff_tiketing_insert_trigger
+            AFTER INSERT ON staff_tiketing
+            FOR EACH ROW
+            BEGIN
+                INSERT INTO logs (logs) VALUES (
+                    CONCAT("Staff Tiketing dengan ID ", NEW.id_st, " telah ditambahkan dengan nama: ", NEW.nama_st, ".")
+                );
+            END
+        ');
     }
 
     /**
@@ -48,5 +60,6 @@ return new class extends Migration
     {
         DB::unprepared('DROP TRIGGER IF EXISTS mitra_insert_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS berita_insert_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS tiketing_insert_trigger');
     }
 };
