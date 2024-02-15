@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Models\Logs;
 
 class MitraController extends Controller
 {
@@ -19,17 +20,17 @@ class MitraController extends Controller
         $this->userModel = new Mitra;
     }
 
-    public function index()
+    public function index(Logs $logs)
     {
         $data = [
             'mitra' => DB::table('view_mitra')->get(),
+            'logs'=> $logs->all(),
             'totalMitra' => DB::select("SELECT CountMitra() as totalMitra")[0]->totalMitra
         ];
 
         return view('mitra.index', $data);
     }
-
-
+    
     // public function index(Mitra $mitra)
     // {
 
