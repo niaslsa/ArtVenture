@@ -14,10 +14,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // Retrieve data from the Dashboard model if needed
-        $dashboardData = Dashboard::all();
+        // $data = [
+        //     'jumlahWisatawan',
+        //     'jumlahPenyewaan'
+        // ];
+        // Controller atau file lainnya
+        $data = [
+            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            'data' => [10, 25, 18, 32, 20],
+        ];
 
-        return view('dashboard.index', compact('dashboardData'));
+        return view('dashboard.index', compact('data'));
+
+        return view('dashboard.index');
     }
 
     /**

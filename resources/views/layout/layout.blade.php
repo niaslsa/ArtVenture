@@ -365,12 +365,11 @@
 
                 <ul class="" style="padding-left: 20px">
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="/dashboard">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
-
                     @if (Auth::check() && Auth::user()->role == 'jurnalis')
                         <li class="nav-link">
                             <a href="/berita">
@@ -378,18 +377,18 @@
                                 <span class="text nav-text">Berita</span>
                             </a>
                         </li>
-                    @endif
+                     @endif 
 
                     @if (Auth::check() && Auth::user()->role == 'staff_ticketing')
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="stafftiketing">
                                 <i class='bx bx-barcode icon'></i>
                                 <span class="text nav-text">Tiketing</span>
                             </a>
                         </li>
                     @endif
 
-                    @if (Auth::user()->role == 'staff_sarana')
+                    @if (Auth::check() && Auth::user()->role == 'staff_sarana')
                         <li class="nav-link">
                             <a href="/lahan">
                                 <i class='bx bx-buildings icon'></i>
@@ -472,7 +471,6 @@
             }
         });
     </script>
-
 </body>
 
 </html>

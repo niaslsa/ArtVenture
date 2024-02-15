@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('staff_tiketing', function (Blueprint $table) {
-            $table->integer('id_st');
+            $table->integer('id_st', true);
             $table->integer('id_akun');
             $table->string('nama_st',20);
-            $table->integer('kontak_st',14);
+            $table->integer('kontak_st');
             $table->text('foto_st');
 
             //Foreign Key
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff_tiketings');
+        Schema::dropIfExists('staff_tiketing');
     }
 };

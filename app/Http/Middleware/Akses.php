@@ -22,6 +22,6 @@ class Akses
             return $next($request);
         }
 
-        return back();
+        return redirect()->to('/login');
     }
 }
