@@ -36,7 +36,7 @@ return new class extends Migration
             AFTER DELETE ON staff_tiketing
             FOR EACH ROW
             BEGIN
-                INSERT INTO logs (logs) VALUES (CONCAT("Staff Tiketing dengan ID: ", OLD.id_st, " telah dihapus."));
+                INSERT INTO logs (logs) VALUES (CONCAT("Staff Tiketing dengan ID: ", OLD.id_st, " telah dihapus.", ". Pada tanggal : ", CURDATE()));
             END
         ');
     }
