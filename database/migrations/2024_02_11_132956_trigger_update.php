@@ -96,7 +96,7 @@ return new class extends Migration
 
                 SELECT id_st INTO st_id FROM staff_tiketing WHERE id_st = NEW.id_st;
 
-                SET update_message = CONCAT("Staff Tiketing dengan nomor ID: ", st_id, " telah diupdate. Perubahan:");
+                SET update_message = CONCAT("Staff Tiketing dengan nomor ID: ", st_id, " telah diupdate pada tanggal : ", CURDATE(), " . Perubahan:");
 
                 IF OLD.id_akun != NEW.id_akun THEN
                     SET perubahan = CONCAT("ID Akun dari ", OLD.id_akun, " ke ", NEW.id_akun);

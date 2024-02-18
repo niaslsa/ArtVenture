@@ -21,6 +21,8 @@
                 <table class="table table-hover table-bordered DataTable">
                     <thead>
                         <tr>
+                            <th>No</th>
+                            <th>Username Akun</th>
                             <th>NAMA</th>
                             <th>FOTO</th>
                             <th>KONTAK</th>
@@ -30,6 +32,8 @@
                     <tbody>
                         @foreach ($StaffTiketing as $l)
                             <tr>
+                                <td>{{ $loop->index+1 }}</td>
+                                <td>{{ $l->username_akun }}</td>
                                 <td>{{ $l->nama_st }}</td>
                                 <td>
                                     @if ($l->foto_st)

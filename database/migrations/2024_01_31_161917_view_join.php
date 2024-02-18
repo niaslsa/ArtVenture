@@ -37,12 +37,14 @@ return new class extends Migration
         DB::unprepared("
             CREATE VIEW view_staff_tiketing AS
             SELECT
-                id_st,
-                id_akun,
-                nama_st,
-                kontak_st,
-                foto_st 
-            FROM staff_tiketing
+                s.id_st AS id_st,
+                s.id_akun AS id_akun,
+                s.nama_st AS nama_st,
+                s.kontak_st AS kontak_st,
+                s.foto_st AS foto_st,
+                a.username AS username_akun 
+            FROM staff_tiketing s
+            JOIN akun a ON a.id_akun = s.id_akun
         ");
 
 
