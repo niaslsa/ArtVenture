@@ -151,6 +151,7 @@ a{
                     <!-- Isi kotak pertama -->
                     <h5 class="card-title" id="card-title1">Log Activity</h5>
                     <a class="loglink" href="#S">klik disini untuk melihat Log Activity.</a>
+                    <p>{{$data['totalLogs']}}</p>
                     <img class="img" src="{{ asset('foto/log.png') }}" alt="Deskripsi Gambar">
                 </div>
             </div>
@@ -163,6 +164,7 @@ a{
                     <!-- Isi kotak kedua -->
                     <h5 class="card-title">Kotak 2</h5>
                     <p class="card-text">Jumlah wisatawan</p>
+                    <p>{{$data['totalWisatawan']}}</p>
                     <img class="img" src="{{ asset('foto/wisatawan.png') }}" alt="Deskripsi Gambar">
                 </div>
             </div>
@@ -175,6 +177,7 @@ a{
                     <!-- Isi kotak ketiga -->
                     <h5 class="card-title">Kotak 3</h5>
                     <p class="card-text">Jumlah penyewaan</p>
+                    <p>{{$data['totalPenyewaan']}}</p>
                     <img class="img" src="{{ asset('foto/penyewaan.png') }}" alt="Deskripsi Gambar">
                 </div>
             </div>

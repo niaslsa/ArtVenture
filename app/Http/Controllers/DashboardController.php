@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -22,11 +23,14 @@ class DashboardController extends Controller
         $data = [
             'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
             'data' => [10, 25, 18, 32, 20],
+            'totalLogs' => DB::select("SELECT CountTotalLogs() as totalLogs")[0]->totalLogs,
+            'totalWisatawan' => DB::select("SELECT CountTotalWisatawan() as totalWisatawan")[0]->totalWisatawan,
+            'totalPenyewaan' => DB::select("SELECT CountTotalPenyewaan() as totalPenyewaan")[0]->totalPenyewaan
         ];
 
         return view('dashboard.index', compact('data'));
 
-        return view('dashboard.index');
+        // return view('dashboard.index');
     }
 
     /**

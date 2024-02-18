@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Models\Logs;
 
 class BeritaController extends Controller
 {
@@ -19,16 +20,16 @@ class BeritaController extends Controller
         $this->userModel = new Berita;
     }
 
-    public function index()
+    public function index(Logs $logs)
     {
         $data = [
             'berita' => DB::table('view_berita')->get(),
+            'logs'=> $logs->all(),
             'totalBerita' => DB::select("SELECT CountBerita() as totalBerita")[0]->totalBerita
         ];
 
         return view('berita.index', $data);
     }
-
 
     // public function index(Berita $berita)
     // {
@@ -59,7 +60,7 @@ class BeritaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Berita $berita)
     {
         $data = $request->validate([
             'nama_berita' => 'required',

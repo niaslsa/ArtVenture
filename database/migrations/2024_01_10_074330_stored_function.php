@@ -13,6 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPenyewaan');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalWisatawan');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalLogs');
 
         DB::unprepared('
         CREATE FUNCTION CountTotalPenyewaan() RETURNS INT
@@ -20,6 +22,24 @@ return new class extends Migration
             DECLARE penyewaanCount INT;
             SELECT COUNT(*)INTO penyewaanCount FROM penyewaan;
             RETURN penyewaanCount;
+            END
+            ');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalWisatawan() RETURNS INT
+        BEGIN
+            DECLARE wisatawanCount INT;
+            SELECT COUNT(*)INTO wisatawanCount FROM wisatawan;
+            RETURN wisatawanCount;
+            END
+            ');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalLogs() RETURNS INT
+        BEGIN
+            DECLARE logsCount INT;
+            SELECT COUNT(*)INTO logsCount FROM logs;
+            RETURN logsCount;
             END
             ');
     }
@@ -30,5 +50,7 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPenyewaan');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalWisatawan');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalLogs');
     }
 };

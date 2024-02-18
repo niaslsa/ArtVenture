@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Akun;
 use App\Models\StaffTiketing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class StaffTiketingController extends Controller
@@ -53,9 +54,11 @@ class StaffTiketingController extends Controller
             $foto_file->move(public_path('foto'), $foto_nama);
 
             $data['foto_st'] = $foto_nama;
-            $staffTiketing->create($data);
 
-            return redirect('/stafftiketing');
+            if (DB::statement("CALL CreateStaffTiketing(?,?,?,?)", [$data['id_akun'], $data['nama_st'], $data['kontak_st'], $data['foto_st']])) {
+                return redirect('/stafftiketing');
+            }
+
         }else{
             return back()->with('error', 'Data gagal ditambah');
         }
