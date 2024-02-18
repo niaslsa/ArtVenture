@@ -18,7 +18,7 @@ class StaffTiketingController extends Controller
     public function index(StaffTiketing $staffTiketing)
     {
         $data = [
-            'StaffTiketing' => $staffTiketing->get()
+            'StaffTiketing'=> DB::table('view_staff_tiketing')->get()
         ];  
         // dd($data);
         return view('stafftiketing.index', $data);
