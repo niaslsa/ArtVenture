@@ -117,10 +117,8 @@ Route::middleware(['auth'])->group(function () {
  });
 
  Route::prefix('tiket')
-//  ->middleware(['akses:staff_tiketing'])
  ->group(function () {
      Route::get('/', [TiketController::class, 'index']);
-    //  Route::get('/tambah', [TiketController::class, 'create']);
      Route::post('/simpan', [TiketController::class, 'store']);
      Route::get('/edit/{id}', [TiketController::class, 'edit']);
      Route::get('/detail/{id}', [TiketController::class, 'detail']);
