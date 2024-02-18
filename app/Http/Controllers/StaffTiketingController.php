@@ -18,7 +18,8 @@ class StaffTiketingController extends Controller
     public function index(StaffTiketing $staffTiketing)
     {
         $data = [
-            'StaffTiketing'=> DB::table('view_staff_tiketing')->get()
+            'StaffTiketing'=> DB::table('view_staff_tiketing')->get(),
+            'TotalST'=> DB::select("SELECT CountTotalST() as totalST")[0]->totalST
         ];  
         // dd($data);
         return view('stafftiketing.index', $data);

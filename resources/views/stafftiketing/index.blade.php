@@ -8,6 +8,7 @@
                     <span class="h1" style="color:#757171; font-weight: bold;">
                         Data Staff Tiketing
                     </span>
+                    <p>Total Data Staff tiketing :{{ $TotalST }}</p>
                 </div>
                 <a href="stafftiketing/cetak">
                     <button class="btn btn-primary ml-auto mt-5" style="float: right">

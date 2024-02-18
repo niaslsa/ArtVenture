@@ -15,6 +15,7 @@ return new class extends Migration
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPenyewaan');
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalWisatawan');
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalLogs');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalST');
 
         DB::unprepared('
         CREATE FUNCTION CountTotalPenyewaan() RETURNS INT
@@ -42,6 +43,15 @@ return new class extends Migration
             RETURN logsCount;
             END
             ');
+
+        DB::unprepared('
+            CREATE FUNCTION CountTotalST() RETURNS INT
+            BEGIN
+                DECLARE STCount INT;
+                SELECT COUNT(*)INTO STCount FROM staff_tiketing;
+                RETURN STCount;
+                END
+            ');
     }
 
     /**
@@ -52,5 +62,6 @@ return new class extends Migration
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPenyewaan');
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalWisatawan');
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalLogs');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalST');
     }
 };
