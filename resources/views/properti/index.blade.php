@@ -50,6 +50,31 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="mt-5">
+                    <h5>Log Activity</h5>
+                    <table class="table table-hover table-bordered DataTable">
+                        <thead>
+                            <tr>
+                                <th>ID LOG</th>
+                                <th>AKSI</th>
+                                <th>WAKTU</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($logs as $log)
+                                @if (!Str::startsWith($log->logs, 'Berita'))
+                                    <tr>
+                                        <td>{{ $log->id_logs }}</td>
+                                        <td>{{ $log->logs }}</td>
+                                        <td>{{ date('Y-m-d') }}</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
         <div class="col-md-4">

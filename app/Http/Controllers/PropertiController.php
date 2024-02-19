@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Logs;
 use App\Models\Properti;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,13 @@ class PropertiController extends Controller
     {
         $this->userModel = new Properti;
     }
-    public function index(Properti $properti)
+    public function index(Properti $properti, Logs $logs)
     {
         $data = [
-            'properti' => $this->userModel->all()
+            'properti' => $this->userModel->all(),
+            'logs' => $logs->all()
         ];
-        // dd($data);
+
         return view('properti.index', $data);
     }
 

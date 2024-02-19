@@ -122,6 +122,81 @@ return new class extends Migration
             END
         ');
 
+        DB::unprepared('
+            CREATE TRIGGER lahan_update_trigger
+            AFTER UPDATE ON lahan
+            FOR EACH ROW
+            BEGIN
+                DECLARE lh_id INT;
+                DECLARE perubahan VARCHAR(255);
+                DECLARE update_message TEXT;
+
+                SELECT id_lahan INTO lh_id FROM lahan WHERE id_lahan = NEW.id_lahan;
+
+                SET update_message = CONCAT("Lahan dengan nomor ID: ", lh_id, " telah diupdate. Perubahan:");
+
+                IF OLD.nama_lahan != NEW.nama_lahan THEN
+                    SET perubahan = CONCAT("Nama Lahan dari ", OLD.nama_lahan, " ke ", NEW.nama_lahan);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.lokasi_lahan != NEW.lokasi_lahan THEN
+                    SET perubahan = CONCAT("Lokasi Lahan dari ", OLD.lokasi_lahan, " ke ", NEW.lokasi_lahan);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.penyewaan != NEW.penyewaan THEN
+                    SET perubahan = CONCAT("Status Penyewaan dari ", OLD.penyewaan, " ke ", NEW.penyewaan);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.foto_lahan != NEW.foto_lahan THEN
+                    SET perubahan = CONCAT("Foto Lahan berubah");
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                INSERT INTO logs (logs) VALUES (update_message);
+            END
+        ');
+
+        DB::unprepared('
+            CREATE TRIGGER properti_update_trigger
+            AFTER UPDATE ON properti
+            FOR EACH ROW
+            BEGIN
+                DECLARE properti_id INT;
+                DECLARE perubahan VARCHAR(255);
+                DECLARE update_message TEXT;
+
+                SELECT id_properti INTO properti_id FROM properti WHERE id_properti = NEW.id_properti;
+
+                SET update_message = CONCAT("Properti dengan nomor ID: ", properti_id, " telah diupdate. Perubahan:");
+
+                IF OLD.nama_properti != NEW.nama_properti THEN
+                    SET perubahan = CONCAT("Nama Properti dari ", OLD.nama_properti, " ke ", NEW.nama_properti);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.kondisi_properti != NEW.kondisi_properti THEN
+                    SET perubahan = CONCAT("Kondisi Properti dari ", OLD.kondisi_properti, " ke ", NEW.kondisi_properti);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.penyewaan != NEW.penyewaan THEN
+                    SET perubahan = CONCAT("Penyewaan dari ", OLD.penyewaan, " ke ", NEW.penyewaan);
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                IF OLD.foto_properti != NEW.foto_properti THEN
+                    SET perubahan = CONCAT("Foto Properti berubah");
+                    SET update_message = CONCAT(update_message, " ", perubahan);
+                END IF;
+
+                INSERT INTO logs (logs) VALUES (update_message);
+            END
+        ');
+
+
     }
 
     /**
@@ -132,5 +207,7 @@ return new class extends Migration
         DB::unprepared('DROP TRIGGER IF EXISTS mitra_update_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS berita_update_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS staff_tiketing_update_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS lahan_update_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS properti_update_trigger');
     }
 };

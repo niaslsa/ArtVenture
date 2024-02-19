@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lahan;
+use App\Models\Logs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -17,10 +18,11 @@ class LahanController extends Controller
     {
         $this->userModel = new Lahan;
     }
-    public function index(Lahan $lahan)
+    public function index(Lahan $lahan, Logs $logs)
     {
         $data = [
             'lahan' => DB::table('view_lahan')->get(),
+            'logs' => $logs->all()
         ];
         
         return view('lahan.index', $data);

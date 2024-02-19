@@ -39,6 +39,24 @@ return new class extends Migration
                 INSERT INTO logs (logs) VALUES (CONCAT("Staff Tiketing dengan ID: ", OLD.id_st, " telah dihapus."));
             END
         ');
+
+        DB::unprepared('
+            CREATE TRIGGER lahan_delete_trigger
+            AFTER DELETE ON lahan
+            FOR EACH ROW
+            BEGIN
+            INSERT INTO logs (logs) VALUES (CONCAT("Lahan dengan ID: ", OLD.id_lahan, " telah dihapus."));
+            END
+        ');
+
+        DB::unprepared('
+            CREATE TRIGGER properti_delete_trigger
+            AFTER DELETE ON properti
+            FOR EACH ROW
+            BEGIN
+            INSERT INTO logs (logs) VALUES (CONCAT("Properti dengan ID: ", OLD.id_properti, " telah dihapus."));
+            END
+        ');
     }
 
     /**
@@ -49,5 +67,7 @@ return new class extends Migration
         DB::unprepared('DROP TRIGGER IF EXISTS mitra_delete_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS berita_delete_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS staff_tiketing_delete_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS lahan_delete_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS properti_delete_trigger');
     }
 };
