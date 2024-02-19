@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
@@ -35,17 +33,20 @@ return new class extends Migration
         FROM mitra m
     ");
 
-    DB::unprepared("DROP VIEW IF EXISTS view_lahan");
+    DB::unprepared("DROP VIEW IF EXISTS view_staff_tiketing");
         DB::unprepared("
-            CREATE VIEW view_lahan AS
+            CREATE VIEW view_staff_tiketing AS
             SELECT
-                id_lahan,
-                nama_lahan,
-                lokasi_lahan,
-                penyewaan,
-                foto_lahan
-            FROM lahan
+                s.id_st AS id_st,
+                s.id_akun AS id_akun,
+                s.nama_st AS nama_st,
+                s.kontak_st AS kontak_st,
+                s.foto_st AS foto_st,
+                a.username AS username_akun 
+            FROM staff_tiketing s
+            JOIN akun a ON a.id_akun = s.id_akun
         ");
+
 
     }
 

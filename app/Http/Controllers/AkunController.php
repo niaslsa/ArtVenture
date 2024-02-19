@@ -31,13 +31,13 @@ class AkunController extends Controller
             $userRole = Auth::user()->role;
 
             if ($userRole == 'super_admin') {
-                return redirect()->to('/');
+                return redirect()->to('/dashboard');
             } elseif ($userRole == 'mitra') {
                 return redirect()->to('/mitra');
             } elseif ($userRole == 'jurnalis') {
                 return redirect()->to('/berita');
             } elseif ($userRole == 'staff_ticketing') {
-                return redirect()->to('/');
+                return redirect()->to('/stafftiketing');
             } elseif ($userRole == 'staff_sarana') {
                 return redirect()->to('/lahan');
             }

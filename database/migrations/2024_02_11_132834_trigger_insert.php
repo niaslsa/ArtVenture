@@ -47,7 +47,7 @@ return new class extends Migration
             FOR EACH ROW
             BEGIN
                 INSERT INTO logs (logs) VALUES (
-                    CONCAT("Staff Tiketing dengan ID ", NEW.id_st, " telah ditambahkan dengan nama: ", NEW.nama_st, ".")
+                    CONCAT("Staff Tiketing dengan ID ", NEW.id_st, " telah ditambahkan dengan nama: ", NEW.nama_st, ". Pada tanggal : ", CURDATE() )
                 );
             END
         ');
