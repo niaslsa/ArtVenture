@@ -18,7 +18,8 @@ class StaffTiketingController extends Controller
     public function index(StaffTiketing $staffTiketing)
     {
         $data = [
-            'StaffTiketing'=> DB::table('view_staff_tiketing')->get()
+            'StaffTiketing'=> DB::table('view_staff_tiketing')->get(),
+            'TotalST'=> DB::select("SELECT CountTotalST() as totalST")[0]->totalST
         ];  
         // dd($data);
         return view('stafftiketing.index', $data);
@@ -124,10 +125,8 @@ class StaffTiketingController extends Controller
     public function detail(Request $request, StaffTiketing $stafftiketing, Akun $akun)
     {
         $data = [
-            'stafftiketting' => $stafftiketing->where('id_st' ,$request->id)->first(),
-            'akun' => $akun->get()
+            'stafftiketting' => $stafftiketing->where('id_st' ,$request->id)->join('akun', 'staff_tiketing.id_akun', '=', 'akun.id_akun')->first()
         ];
-
         return view('stafftiketing.detail', $data);
     }
 
@@ -161,7 +160,7 @@ class StaffTiketingController extends Controller
         $data = [
             'StaffTiketing' => $staffTiketing->get()
         ];          
-        $pdf = PDF::loadView('presensi-pdf', $data);
-        return $pdf->download('presensi.pdf');
-    }
+        $pdf = PDF::loadView('stafftiketing.cetak', $data);
+        return $pdf->download('report_laporan_stafftiketing');
+    } 
 }

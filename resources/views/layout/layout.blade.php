@@ -370,7 +370,7 @@
                             <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
-                    @if (Auth::check() && Auth::user()->role == 'jurnalis')
+                    @if (Auth::user()->role == 'jurnalis' || Auth::user()->role == 'super_admin')
                         <li class="nav-link">
                             <a href="/berita">
                                 <i class='bx bx-news icon'></i>
@@ -379,7 +379,7 @@
                         </li>
                      @endif 
 
-                    @if (Auth::check() && Auth::user()->role == 'staff_ticketing')
+                    @if (Auth::user()->role == 'staff_ticketing' || Auth::user()->role == 'super_admin')
                         <li class="nav-link">
                             <a href="stafftiketing">
                                 <i class='bx bx-barcode icon'></i>
@@ -388,7 +388,7 @@
                         </li>
                     @endif
 
-                    @if (Auth::check() && Auth::user()->role == 'staff_sarana')
+                    @if (Auth::user()->role == 'staff_sarana' || Auth::user()->role == 'super_admin')
                         <li class="nav-link">
                             <a href="/lahan">
                                 <i class='bx bx-buildings icon'></i>
@@ -411,7 +411,7 @@
                         </li>
                     @endif
 
-                    @if (Auth::check() && Auth::user()->role == 'mitra')
+                    @if (Auth::user()->role == 'mitra'|| Auth::user()->role == 'super_admin')
                         <li class="nav-link">
                             <a href="/mitra">
                                 <i class='bx bx-group icon'></i>

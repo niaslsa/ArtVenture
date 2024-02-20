@@ -111,6 +111,9 @@ a{
 
 </style>
 
+<div>
+    
+</div>
 <div class="title">
     <div>
         <h1>Dashboard</h1>
@@ -147,7 +150,7 @@ a{
                 <div class="card-body" id="kotak1">
                     <!-- Isi kotak pertama -->
                     <h5 class="card-title" id="card-title1">Log Activity</h5>
-                    <a class="loglink" href="#S">klik disini untuk melihat Log Activity.</a>
+                    <a class="loglink" href="/log">klik disini untuk melihat Log Activity.</a>
                     <p>{{$data['totalLogs']}}</p>
                     <img class="img" src="{{ asset('foto/log.png') }}" alt="Deskripsi Gambar">
                 </div>

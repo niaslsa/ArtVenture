@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertiController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LogActivity;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\StaffTiketingController;
 use App\Http\Controllers\TiketController;
@@ -124,5 +125,7 @@ Route::middleware(['auth'])->group(function () {
      Route::delete('/hapus', [TiketController::class, 'destroy']);
      Route::get('/cetak', [TiketController::class, 'cetakSt']);
  });
+
+ Route::get('log', [LogActivity::class, 'index']);
 
 Route::get('logout', [AkunController::class, 'logout']);

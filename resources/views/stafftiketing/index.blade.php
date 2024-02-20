@@ -8,6 +8,7 @@
                     <span class="h1" style="color:#757171; font-weight: bold;">
                         Data Staff Tiketing
                     </span>
+                    <p>Total Data Staff tiketing :{{ $TotalST }}</p>
                 </div>
                 <a href="stafftiketing/cetak">
                     <button class="btn btn-primary ml-auto mt-5" style="float: right">
@@ -47,7 +48,7 @@
                                         <button class="btn btn-primary">EDIT</button>
                                     </a>
                                     <a href="stafftiketing/detail/{{ $l->id_st }}">
-                                        <button class="btn btn-primary">DETAIL</button>
+                                        <button class="btn btn-warning">DETAIL</button>
                                     </a>
                                     <button class="btn btn-danger btnHapus" idST="{{ $l->id_st }}">HAPUS</button>
                                 </td>
