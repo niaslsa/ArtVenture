@@ -42,7 +42,7 @@ class PenyewaanController extends Controller
      */
     public function store(Request $request, Penyewaan $penyewaan)
     {
-        //
+       //
     }
 
     /**

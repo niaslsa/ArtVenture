@@ -61,11 +61,6 @@ Route::middleware(['auth'])->group(function () {
         ->middleware(['akses:staff_sarana'])
         ->group(function () {
             Route::get('/', [PenyewaanController::class, 'index']);
-            Route::get('/tambah', [PenyewaanController::class, 'create']);
-            Route::post('/simpan', [PenyewaanController::class, 'store']);
-            Route::get('/edit/{id}', [PenyewaanController::class, 'edit']);
-            Route::get('/detail/{id}', [PenyewaanController::class, 'detail']);
-            Route::post('/edit/update', [PenyewaanController::class, 'update']);
             Route::delete('/hapus', [PenyewaanController::class, 'destroy']);
             Route::get('/cetak', [PenyewaanController::class, 'cetakPenyewaan']);
         });
