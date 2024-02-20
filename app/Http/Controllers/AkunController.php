@@ -37,9 +37,9 @@ class AkunController extends Controller
             } elseif ($userRole == 'jurnalis') {
                 return redirect()->to('/berita');
             } elseif ($userRole == 'staff_ticketing') {
-                return redirect()->to('/stafftiketing');
+                return redirect()->to('/dashboard');
             } elseif ($userRole == 'staff_sarana') {
-                return redirect()->to('/lahan');
+                return redirect()->to('/dashboard');
             }
         }
         

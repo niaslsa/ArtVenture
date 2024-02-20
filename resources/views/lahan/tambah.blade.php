@@ -14,6 +14,10 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
+                                        <label>ID Lahan</label>
+                                        <input type="text" class="form-control" name="id_lahan"/>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Nama Lahan</label>
                                         <input type="text" class="form-control" name="nama_lahan"/>
                                     </div>

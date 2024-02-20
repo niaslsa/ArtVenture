@@ -30,7 +30,7 @@
                                         <input type="text" class="form-control" name="lokasi_lahan"
                                             value="{{ $item->lokasi_lahan }}" />
                                     </div>
-                                    <div class="form-grou">
+                                    <div class="form-group">
                                         <label>Status Penyewaan</label>
                                         <div>
                                             @foreach ($statusPenyewaan as $option)

@@ -1,14 +1,22 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <style>
+      .judul{
+        text-align: center;
+      }
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Cetak Data</title>
+    <title>Cetak Data Penyewaan</title>
   </head>
   <body>
+    <h1 class="judul">
+    Report Tabel Penyewaan
+    </h1>
     <div class="container">
         <div class="row">
             <table class="table table-striped mt-5">
@@ -17,8 +25,10 @@
                 <th>ID Penyewaan</th>
                 <th>ID Lahan</th>
                 <th>Nama Lahan</th>
+                <th>Foto Lahan</th>
                 <th>ID Properti</th>
                 <th>Nama Properti</th>
+                <th>Foto Properti</th>
             </tr>
         </thead>
         <tbody>
@@ -28,8 +38,10 @@
                 <td>{{ $n->id_penyewaan }}</td>
                 <td>{{ $n->id_lahan }}</td>
                 <td>{{ $n->nama_lahan }}</td>
+                <td>{{ $n->foto_lahan }}</td>
                 <td>{{ $n->id_properti }}</td>
                 <td>{{ $n->nama_properti }}</td>
+                <td>{{ $n->foto_properti }}</td>
               
             </tr>
             @endforeach

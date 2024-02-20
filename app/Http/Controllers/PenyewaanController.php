@@ -25,24 +25,24 @@ class PenyewaanController extends Controller
             'penyewaan' => $this->userModel->all(),
             'jumlahPenyewaan' => $totalPenyewaan
         ];
-        
+
         return view('penyewaan.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-     public function create(Penyewaan $penyewaan)
-     {
-       //
+    public function create(Penyewaan $penyewaan)
+    {
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-     public function store(Request $request, Penyewaan $penyewaan)
+    public function store(Request $request, Penyewaan $penyewaan)
     {
-     //
+        //
     }
 
     /**
@@ -58,12 +58,12 @@ class PenyewaanController extends Controller
      */
     public function edit(Penyewaan $penyewaan, string $id)
     {
-    //
+        //
     }
 
     public function detail(Penyewaan $penyewaan, string $id)
     {
-    //
+        //
     }
 
 
@@ -72,7 +72,7 @@ class PenyewaanController extends Controller
      */
     public function update(Request $request, Penyewaan $penyewaan)
     {
-    // 
+        // 
     }
 
     /**
@@ -80,17 +80,36 @@ class PenyewaanController extends Controller
      */
     public function destroy(Penyewaan $penyewaan, Request $request)
     {
-    //
+        $id_penyewaan = $request->input('id_penyewaan');
+
+        $aksi = $penyewaan->where('id_penyewaan', $id_penyewaan)->delete();
+
+        if ($aksi) {
+            // Pesan Berhasil
+            $pesan = [
+                'success' => true,
+                'pesan'   => 'Data penyewaan berhasil dihapus'
+            ];
+        } else {
+            // Pesan Gagal
+            $pesan = [
+                'success' => false,
+                'pesan'   => 'Data gagal dihapus'
+            ];
+        }
+
+        return response()->json($pesan);
     }
 
     //     return response()->json($pesan);
     // }
 
-    public function cetakPenyewaan(Penyewaan $penyewaan) 
+    public function cetakPenyewaan(Penyewaan $penyewaan)
     {
         $penyewaan = $penyewaan->all();
-        $pdf = Pdf::loadView('penyewaan.cetak',['penyewaan' => $penyewaan]);
-        return $pdf->download('penyewaan.pdf');
+        $pdf = Pdf::loadView('penyewaan.cetak', ['penyewaan' => $penyewaan]);
+        return $pdf->stream('penyewaan.pdf');
 
+        
     }
 }

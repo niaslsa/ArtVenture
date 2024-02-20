@@ -134,9 +134,6 @@ a{
             </ul>
             <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
             <ul><!--MENU-->
-                <li><a href="#">Profile</li></a>
-                <li><a href="#">Account</li></a>
-                <li><a href="#">Settings</li></a>
                 <li><a href="#">Log Out</li></a>
             </ul>
         </div>
@@ -162,7 +159,7 @@ a{
             <div class="card">
                 <div class="card-body" id="kotak2">
                     <!-- Isi kotak kedua -->
-                    <h5 class="card-title">Kotak 2</h5>
+                    <h5 class="card-title">Wisatawan</h5>
                     <p class="card-text">Jumlah wisatawan</p>
                     <p>{{$data['totalWisatawan']}}</p>
                     <img class="img" src="{{ asset('foto/wisatawan.png') }}" alt="Deskripsi Gambar">
@@ -175,7 +172,7 @@ a{
             <div class="card">
                 <div class="card-body" id="kotak3">
                     <!-- Isi kotak ketiga -->
-                    <h5 class="card-title">Kotak 3</h5>
+                    <h5 class="card-title">Penyewaan</h5>
                     <p class="card-text">Jumlah penyewaan</p>
                     <p>{{$data['totalPenyewaan']}}</p>
                     <img class="img" src="{{ asset('foto/penyewaan.png') }}" alt="Deskripsi Gambar">
