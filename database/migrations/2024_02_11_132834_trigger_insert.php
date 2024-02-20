@@ -40,7 +40,11 @@ return new class extends Migration
             END
         ');
 
+<<<<<<< HEAD
         // STAFF TIKEING INSERT TRIGGER
+=======
+        // STAFF TICKETING INSERT TRIGGER
+>>>>>>> 382f84e7ee61587efba6e1898b880b8015bad0da
         DB::unprepared('
             CREATE TRIGGER staff_tiketing_insert_trigger
             AFTER INSERT ON staff_tiketing
@@ -48,6 +52,30 @@ return new class extends Migration
             BEGIN
                 INSERT INTO logs (logs) VALUES (
                     CONCAT("Staff Tiketing dengan ID ", NEW.id_st, " telah ditambahkan dengan nama: ", NEW.nama_st, ". Pada tanggal : ", CURDATE() )
+                );
+            END
+        ');
+
+        // Lahan INSERT TRIGGER
+        DB::unprepared('
+            CREATE TRIGGER lahan_insert_trigger
+            AFTER INSERT ON lahan
+            FOR EACH ROW
+            BEGIN
+                INSERT INTO logs (logs) VALUES (
+                    CONCAT("Lahan dengan ID ", NEW.id_lahan, " telah ditambahkan.")
+                );
+            END
+        ');
+
+        // Properti INSERT TRIGGER
+        DB::unprepared('
+            CREATE TRIGGER properti_insert_trigger
+            AFTER INSERT ON properti
+            FOR EACH ROW
+            BEGIN
+                INSERT INTO logs (logs) VALUES (
+                    CONCAT("Properti dengan ID ", NEW.id_properti, " telah ditambahkan.")
                 );
             END
         ');
@@ -60,6 +88,8 @@ return new class extends Migration
     {
         DB::unprepared('DROP TRIGGER IF EXISTS mitra_insert_trigger');
         DB::unprepared('DROP TRIGGER IF EXISTS berita_insert_trigger');
-        DB::unprepared('DROP TRIGGER IF EXISTS tiketing_insert_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS staff_tiketing_insert_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS lahan_insert_trigger');
+        DB::unprepared('DROP TRIGGER IF EXISTS properti_insert_trigger');
     }
 };
