@@ -40,7 +40,7 @@ return new class extends Migration
             END
         ');
 
-        // BERITA INSERT TRIGGER
+        // STAFF TIKEING INSERT TRIGGER
         DB::unprepared('
             CREATE TRIGGER staff_tiketing_insert_trigger
             AFTER INSERT ON staff_tiketing

@@ -48,7 +48,7 @@
                                         <button class="btn btn-primary">EDIT</button>
                                     </a>
                                     <a href="stafftiketing/detail/{{ $l->id_st }}">
-                                        <button class="btn btn-primary">DETAIL</button>
+                                        <button class="btn btn-warning">DETAIL</button>
                                     </a>
                                     <button class="btn btn-danger btnHapus" idST="{{ $l->id_st }}">HAPUS</button>
                                 </td>

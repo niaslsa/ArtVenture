@@ -15,10 +15,7 @@
                                 <div class="col-md-5">
                                 <div class="form-group">
                                         <label>Username Akun</label>
-                                            @foreach ($akun as $a)
-                                                <p>{{$a->username}}</p>
-                                            @endforeach
-                                        </select>
+                                        <p>{{ $stafftiketting->username }}</p>                                            
                                     </div>
                                     <div class="form-group">
                                         <label>Nama</label>

@@ -125,10 +125,8 @@ class StaffTiketingController extends Controller
     public function detail(Request $request, StaffTiketing $stafftiketing, Akun $akun)
     {
         $data = [
-            'stafftiketting' => $stafftiketing->where('id_st' ,$request->id)->first(),
-            'akun' => $akun->get()
+            'stafftiketting' => $stafftiketing->where('id_st' ,$request->id)->join('akun', 'staff_tiketing.id_akun', '=', 'akun.id_akun')->first()
         ];
-
         return view('stafftiketing.detail', $data);
     }
 
