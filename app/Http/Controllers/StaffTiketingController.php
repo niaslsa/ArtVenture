@@ -160,7 +160,7 @@ class StaffTiketingController extends Controller
         $data = [
             'StaffTiketing' => $staffTiketing->get()
         ];          
-        $pdf = PDF::loadView('presensi-pdf', $data);
-        return $pdf->download('presensi.pdf');
-    }
+        $pdf = PDF::loadView('stafftiketing.cetak', $data);
+        return $pdf->download('report_laporan_stafftiketing');
+    } 
 }
