@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Logs;
 use App\Models\Properti;
+use App\Models\Penyewaan;
 use Illuminate\Http\Request;
 
 class PropertiController extends Controller
@@ -103,26 +104,40 @@ class PropertiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Properti $properti)
+    public function update(Request $request, Properti $properti, Penyewaan $penyewaan)
     {
         $data = $request->validate([
+            'id_properti' => 'required',
             'nama_properti' => 'required',
             'kondisi_properti' => 'required',
             'penyewaan' => 'sometimes',
-            'foto_properti' => 'sometimes', 
+            'foto_properti' => 'sometimes',
         ]);
-
-        if ($request->hasFile('foto_properti') && $request->file('foto_properti')->isValid()) {
-            $foto_file = $request->file('foto_properti');
-            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
-            $foto_file->move(public_path('foto'), $foto_nama);
-            $data['foto_properti'] = $foto_nama;
-        } 
 
         $id_properti = $request->input('id_properti');
 
         if ($id_properti !== null) {
-            // Process Update
+            if ($request->hasFile('foto_properti') && $request->file('foto_properti')->isValid()) {
+                $foto_file = $request->file('foto_properti');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $data['foto_properti'] = $foto_nama;
+            } else {
+                $foto_properti = $request->input('foto_properti');
+                $data['foto_properti'] = $foto_properti;
+            }
+
+            if ($data['penyewaan'] == 'Ya') {
+                Penyewaan::create([
+                    'id_properti' => $id_properti,
+                    'nama_properti' => $data['nama_properti'],
+                    'kondisi_properti' => $data['kondisi_properti'],
+                    'foto_properti' => $data['foto_properti'],
+                ]);
+
+                unset($data['id_properti']);
+            }
+
             $dataUpdate = $properti->where('id_properti', $id_properti)->update($data);
 
             if ($dataUpdate) {
@@ -132,7 +147,6 @@ class PropertiController extends Controller
             }
         }
     }
-
     /**
      * Remove the specified resource from storage.
      */

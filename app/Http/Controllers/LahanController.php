@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lahan;
+use App\Models\Penyewaan;
 use App\Models\Logs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -102,9 +103,9 @@ class LahanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Lahan $lahan)
+    public function update(Request $request, Lahan $lahan, Penyewaan $penyewaan)
     {
-        // dd($request->all());
+        $id_lahan = $request->input('id_lahan');
 
         $data = $request->validate([
             'nama_lahan' => ['required'],
@@ -113,21 +114,31 @@ class LahanController extends Controller
             'foto_lahan' => ['sometimes'],
         ]);
 
-        $id_lahan = $request->input('id_lahan');
-        // dd($data);
         if ($id_lahan !== null) {
-
             if ($request->hasFile('foto_lahan') && $request->file('foto_lahan')->isValid()) {
                 $foto_file = $request->file('foto_lahan');
                 $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
                 $foto_file->move(public_path('foto'), $foto_nama);
                 $data['foto_lahan'] = $foto_nama;
+            } else {
+                $foto_lahan = $request->input('foto_lahan');
+                $data['foto_lahan'] = $foto_lahan;
             }
 
-            // Process Update
-            $dataUpdate = $lahan->where('id_lahan', $id_lahan)->update($data);
+            if ($data['penyewaan'] == 'Ya') {
+                Penyewaan::create([
+                    'id_lahan' => $id_lahan,
+                    'nama_lahan' => $data['nama_lahan'],
+                    'lokasi_lahan' => $data['lokasi_lahan'],
+                    'foto_lahan' => $data['foto_lahan'],
+                ]);
 
-            if ($dataUpdate) {
+                unset($data['id_lahan']);
+            }
+
+            $lahanUpdated = $lahan->where('id_lahan', $id_lahan)->update($data);
+
+            if ($lahanUpdated) {
                 return redirect('/lahan')->with('success', 'Data lahan berhasil di update');
             } else {
                 return back()->with('error', 'Data lahan gagal di update');

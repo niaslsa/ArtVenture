@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('penyewaan', function (Blueprint $table) {
             $table->integer('id_penyewaan', true);
 
-            $table->integer('id_lahan');
-            $table->string('nama_lahan');
-            $table->text('lokasi_lahan');
-            $table->text('foto_lahan');
+            $table->integer('id_lahan')->nullable(true);
+            $table->string('nama_lahan')->nullable(true);
+            $table->text('lokasi_lahan')->nullable(true);
+            $table->text('foto_lahan')->nullable(true);
 
-            $table->integer('id_properti');
-            $table->string('nama_properti');
-            $table->enum('kondisi_properti',['Baik','Buruk']);
-            $table->text('foto_properti');
+            $table->integer('id_properti')->nullable(true);
+            $table->string('nama_properti')->nullable(true);
+            $table->string('kondisi_properti')->nullable(true);
+            $table->text('foto_properti')->nullable(true);
         });
     }
     /**

@@ -33,49 +33,49 @@
 
                 <hr>
                 <table class="table table-hover table-bordered DataTable">
-                    <thead>
-                        <tr>
-                            <th>ID PENYEWAAN</th>
-                            <th>ID Lahan</th>
-                            <th>Nama Lahan</th>
-                            <th>Lokasi Lahan</th>
-                            <th>Foto Lahan</th>
-                            <th>ID Properti</th>
-                            <th>Nama Properti</th>
-                            <th>Kondisi Properti</th>
-                            <th>Foto Properti</th>
-                            <th>AKSI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($penyewaan as $n)
+                    <table class="table table-hover table-bordered DataTable">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $n->id_lahan ? 0 : '-' }}</td>
-                                <td>{{ $n->nama_lahan }}</td>
-                                <td>{{ $n->lokasi_lahan }}</td>
-                                <td>
-                                    @if ($n->foto_lahan)
-                                        <img src="{{ url('foto') . '/' . $n->foto_lahan }} "
-                                            style="max-width: 250px; height: auto;" />
-                                    @endif
-
-                                <td>{{ $n->id_properti ? 0 : '-' }}</td>
-                                <td>{{ $n->nama_properti }}</td>
-                                <td>{{ $n->kondisi_properti }}</td>
-                                <td>
-                                    @if ($n->foto_properti)
-                                        <img src="{{ url('foto') . '/' . $n->foto_properti }} "
-                                            style="max-width: 250px; height: auto;" />
-                                    @endif
-                                <td>
-                                    <button class="btn btn-danger btnHapus"
-                                        idPenyewaan="{{ $n->id_penyewaan }}">HAPUS</button>
-                                </td>
+                                <th>ID PENYEWAAN</th>
+                                <th>ID Lahan</th>
+                                <th>Nama Lahan</th>
+                                <th>Lokasi Lahan</th>
+                                <th>Foto Lahan</th>
+                                <th>ID Properti</th>
+                                <th>Nama Properti</th>
+                                <th>Kondisi Properti</th>
+                                <th>Foto Properti</th>
+                                <th>AKSI</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($penyewaan as $n)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $n->id_lahan }}</td>
+                                    <td>{{ $n->nama_lahan }}</td>
+                                    <td>{{ $n->lokasi_lahan }}</td>
+                                    <td>
+                                        @if ($n->foto_lahan)
+                                            <img src="{{ url('foto') . '/' . $n->foto_lahan }} "
+                                                style="max-width: 250px; height: auto;" />
+                                        @endif
+                                    <td>{{ $n->id_properti }}</td>
+                                    <td>{{ $n->nama_properti }}</td>
+                                    <td>{{ $n->kondisi_properti }}</td>
+                                    <td>
+                                        @if ($n->foto_properti)
+                                            <img src="{{ url('foto') . '/' . $n->foto_properti }} "
+                                                style="max-width: 250px; height: auto;" alt="properti" />
+                                        @endif
+                                    <td>
+                                        <button class="btn btn-danger btnHapus"
+                                            idPenyewaan="{{ $n->id_penyewaan }}">HAPUS</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>

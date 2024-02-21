@@ -31,7 +31,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Foto Properti</label>
-                                    <input type="file" class="form-control" name="foto_properti" />
+                                    <br>
+                                    <img id="pic" height="100px" class="my-2" alt="Preview Image" />
+                                    <input type="file" class="form-control"
+                                        name="foto_properti"oninput="pic.src=window.URL.createObjectURL(this.files[0])" />
                                 </div>
                                 
                                 @csrf

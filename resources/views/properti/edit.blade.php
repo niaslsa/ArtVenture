@@ -49,9 +49,14 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Foto Properti</label>
-                                        <input type="file" class="form-control" name="foto_properti" />
+                                        <br>
+                                        <img src="{{ url('foto') . '/' . $item->foto_properti }}" id="pic"
+                                            class="my-2" height="100px" />
+                                        <input type="text" name="foto_properti" id="foto_properti"
+                                            value="{{ $item->foto_properti }}" hidden>
+                                        <input type="file" class="form-control" name="foto_properti"
+                                            oninput="pic.src=window.URL.createObjectURL(this.files[0])" />
                                     </div>
-
                                     @csrf
                                     <div class="d-flex mt-3">
                                         <button type="submit" class="btn btn-primary"
