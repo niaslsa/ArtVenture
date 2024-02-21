@@ -28,6 +28,7 @@
                 <th>Foto Lahan</th>
                 <th>ID Properti</th>
                 <th>Nama Properti</th>
+                <th>Kondisi Properti</th>
                 <th>Foto Properti</th>
             </tr>
         </thead>
@@ -41,6 +42,7 @@
                 <td>{{ $n->foto_lahan }}</td>
                 <td>{{ $n->id_properti }}</td>
                 <td>{{ $n->nama_properti }}</td>
+                <td>{{ $n->kondisi_properti }}</td>
                 <td>{{ $n->foto_properti }}</td>
               
             </tr>

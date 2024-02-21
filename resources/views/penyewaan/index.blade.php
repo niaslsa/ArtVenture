@@ -42,6 +42,7 @@
                             <th>Foto Lahan</th>
                             <th>ID Properti</th>
                             <th>Nama Properti</th>
+                            <th>Kondisi Properti</th>
                             <th>Foto Properti</th>
                             <th>AKSI</th>
                         </tr>
@@ -61,6 +62,7 @@
 
                                 <td>{{ $n->id_properti ? 0 : '-' }}</td>
                                 <td>{{ $n->nama_properti }}</td>
+                                <td>{{ $n->kondisi_properti }}</td>
                                 <td>
                                     @if ($n->foto_properti)
                                         <img src="{{ url('foto') . '/' . $n->foto_properti }} "

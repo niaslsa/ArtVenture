@@ -48,8 +48,9 @@ class LahanController extends Controller
     {
         $data = $request->validate([
             'nama_lahan' => 'required',
-            'lokasi_lahan' => 'required',
-            'foto_lahan' => 'required',
+            'lokasi_lahan' => 'sometimes',
+            'penyewaan' => 'sometimes',
+            'foto_lahan' => 'required'
         ]);
 
         if ($request->hasFile('foto_lahan') && $request->file('foto_lahan')->isValid()) {
@@ -103,9 +104,11 @@ class LahanController extends Controller
      */
     public function update(Request $request, Lahan $lahan)
     {
+        // dd($request->all());
+
         $data = $request->validate([
             'nama_lahan' => ['required'],
-            'lokasi_lahan' => ['required'],
+            'lokasi_lahan' => ['sometimes'],
             'penyewaan' => ['sometimes'],
             'foto_lahan' => ['sometimes'],
         ]);
@@ -145,13 +148,13 @@ class LahanController extends Controller
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data jenis surat berhasil dihapus'
+                'pesan'   => 'Data Lahan berhasil dihapus'
             ];
         } else {
             // Pesan Gagal
             $pesan = [
                 'success' => false,
-                'pesan'   => 'Data gagal dihapus'
+                'pesan'   => 'Data Lahan gagal dihapus'
             ];
         }
 

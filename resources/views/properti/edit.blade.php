@@ -15,10 +15,10 @@
                         <input type="hidden" class="form-control" name="id_properti" value="{{ $item->id_properti }}" />
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>Id Properti</label>
                                         <input type="text" class="form-control" name="id_properti" value="{{ $item->id_properti }}" />
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label>Nama Properti</label>
                                         <input type="text" class="form-control" name="nama_properti" value="{{ $item->nama_properti }}" />

@@ -9,6 +9,6 @@ class Properti extends Model
 {
     protected $table = 'properti';
     protected $primarykey = ['id_properti'];
-    protected $fillable = ['nama_properti','kondisi_properti','foto_properti'];
+    protected $fillable = ['nama_properti','kondisi_properti','foto_properti', 'penyewaan'];
     public $timestamps = false;
 }

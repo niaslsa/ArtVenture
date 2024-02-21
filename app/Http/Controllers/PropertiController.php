@@ -45,9 +45,11 @@ class PropertiController extends Controller
     public function store(Request $request, Properti $properti)
     {
         $data = $request->validate([
-            'nama_properti' => 'required',
-            'kondisi_properti' => 'required',
-            'foto_properti' => 'required', 
+            'nama_properti' => ['required'],
+            'kondisi_properti' => ['required'],
+            'penyewaan' => ['sometimes'],
+            'foto_properti' => ['required']
+
         ]);
 
 
@@ -107,7 +109,7 @@ class PropertiController extends Controller
             'nama_properti' => 'required',
             'kondisi_properti' => 'required',
             'penyewaan' => 'sometimes',
-            'foto_properti' => 'sometimes|file', 
+            'foto_properti' => 'sometimes', 
         ]);
 
         if ($request->hasFile('foto_properti') && $request->file('foto_properti')->isValid()) {
@@ -115,9 +117,7 @@ class PropertiController extends Controller
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
             $foto_file->move(public_path('foto'), $foto_nama);
             $data['foto_properti'] = $foto_nama;
-        } else {
-            return back()->with('error', 'File upload failed. Please select a valid file.');
-        }
+        } 
 
         $id_properti = $request->input('id_properti');
 

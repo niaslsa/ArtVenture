@@ -16,9 +16,13 @@ return new class extends Migration
 
             $table->integer('id_lahan');
             $table->string('nama_lahan');
+            $table->text('lokasi_lahan');
+            $table->text('foto_lahan');
 
             $table->integer('id_properti');
             $table->string('nama_properti');
+            $table->enum('kondisi_properti',['Baik','Buruk']);
+            $table->text('foto_properti');
         });
     }
     /**

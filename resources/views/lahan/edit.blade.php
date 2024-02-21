@@ -15,11 +15,7 @@
                             <input type="hidden" class="form-control" name="id_lahan" value="{{ $item->id_lahan }}" />
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label>Id Lahan</label>
-                                        <input type="text" class="form-control" name="id_lahan"
-                                            value="{{ $item->id_lahan }}" />
-                                    </div>
+                                    {{-- x --}}
                                     <div class="form-group">
                                         <label>Nama Lahan</label>
                                         <input type="text" class="form-control" name="nama_lahan"
